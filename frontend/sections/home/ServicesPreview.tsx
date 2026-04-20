@@ -7,12 +7,14 @@ interface Props {
 }
 
 const defaultServices = [
-  "Administrative Support",
+  "Lead Generation",
   "Customer Support",
   "Marketing & Social Media",
   "Finance & Bookkeeping",
   "Real Estate Services",
   "Web Development",
+  "CRM Management",
+  "Online Reputation Management",
 ];
 
 export default function ServicesPreview({ content = {} }: Props) {
@@ -23,6 +25,8 @@ export default function ServicesPreview({ content = {} }: Props) {
     content.service4 || defaultServices[3],
     content.service5 || defaultServices[4],
     content.service6 || defaultServices[5],
+    content.service7 || defaultServices[6],
+    content.service8 || defaultServices[7],
   ];
 
   return (

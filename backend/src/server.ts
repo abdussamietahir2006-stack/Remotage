@@ -8,6 +8,7 @@ import { connectDB, disconnectDB } from './config/db';
 import { errorHandler } from './middleware/error.middleware';
 import { ApiError } from './utils/ApiError';
 import routes from './routes/index';
+import analyticsRouter from './routes/analytics.routes';
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.get('/api/health', (_req, res) => {
 
 // ── Routes ────────────────────────────────────────────
 app.use('/api', routes);
+app.use('/api/dashboard', analyticsRouter);
 
 // ── 404 Handler ───────────────────────────────────────
 app.use((_req, _res, next) => {

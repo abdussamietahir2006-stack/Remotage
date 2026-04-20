@@ -42,12 +42,14 @@ const defaultForm = {
   stat2Label: "Revenue Generated", stat2Value: "$2M+",
   stat3Label: "Client Satisfaction", stat3Value: "98%",
   stat4Label: "Support Available", stat4Value: "24/7",
-  service1: "Administrative Support",
+  service1: "Lead Generation",
   service2: "Customer Support",
   service3: "Marketing & Social Media",
   service4: "Finance & Bookkeeping",
   service5: "Real Estate Services",
   service6: "Web Development",
+  service7: "CRM Management",
+  service8: "Online Reputation Management",
   newsletterHeading: "Subscribe to Get Special News",
   newsletterSubtext: "Stay updated with our latest services and offers.",
 };
@@ -242,7 +244,7 @@ export default function CMSHome() {
           <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Services List
         </h2>
         <div className="grid sm:grid-cols-2 gap-5">
-          {([1,2,3,4,5,6] as const).map(n => (
+          {([1,2,3,4,5,6,7,8] as const).map(n => (
             <Field key={n} label={`Service ${n}`} name={`service${n}`}
               value={form[`service${n}` as keyof typeof form]}
               onChange={handleFormChange} />
