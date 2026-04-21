@@ -34,26 +34,36 @@ export const getWeeklyChart = asyncHandler(async (_req: Request, res: Response) 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Build 7 days: 3 before today, today, 3 after today
+  // Build 7 days: 6 days before today + today
   const days: { date: Date; label: string }[] = [];
-  for (let i = -3; i <= 3; i++) {
+  for (let i = -6; i <= 0; i++) {
     const d = new Date(today);
     d.setDate(today.getDate() + i);
-    const label = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const label = d.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    });
     days.push({ date: d, label });
   }
 
   const startDate = days[0].date;
-  const endDate = new Date(days[days.length - 1].date);
+  const endDate = new Date(today);
   endDate.setHours(23, 59, 59, 999);
 
   const [leads, bookings, subscribers] = await Promise.all([
-    Lead.find({ createdAt: { $gte: startDate, $lte: endDate } }).select('createdAt').lean(),
-    Booking.find({ createdAt: { $gte: startDate, $lte: endDate } }).select('createdAt').lean(),
-    Subscriber.find({ createdAt: { $gte: startDate, $lte: endDate } }).select('createdAt').lean(),
+    Lead.find({ createdAt: { $gte: startDate, $lte: endDate } })
+      .select('createdAt')
+      .lean(),
+    Booking.find({ createdAt: { $gte: startDate, $lte: endDate } })
+      .select('createdAt')
+      .lean(),
+    Subscriber.find({ createdAt: { $gte: startDate, $lte: endDate } })
+      .select('createdAt')
+      .lean(),
   ]);
 
-  const countByDay = (records: { createdAt: Date }[], day: Date) => {
+  const countByDay = (records: { createdAt: Date }[], day: Date): number => {
     const next = new Date(day);
     next.setDate(day.getDate() + 1);
     return records.filter(r => {
@@ -64,10 +74,10 @@ export const getWeeklyChart = asyncHandler(async (_req: Request, res: Response) 
 
   const chartData = days.map(({ date, label }) => ({
     label,
-    leads: countByDay(leads as { createdAt: Date }[], date),
-    bookings: countByDay(bookings as { createdAt: Date }[], date),
+    leads:       countByDay(leads       as { createdAt: Date }[], date),
+    bookings:    countByDay(bookings    as { createdAt: Date }[], date),
     subscribers: countByDay(subscribers as { createdAt: Date }[], date),
-    isToday: date.getTime() === today.getTime(),
+    isToday:     date.getTime() === today.getTime(),
   }));
 
   return ApiResponse({

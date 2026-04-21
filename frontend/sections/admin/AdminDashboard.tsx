@@ -188,7 +188,7 @@ export default function AdminDashboard() {
           <div>
             <h3 className="text-white font-semibold text-lg">Weekly Activity</h3>
             <p className="text-gray-500 text-xs mt-0.5">
-              3 days before · today · 3 days ahead
+                Leads, bookings, and subscribers over the past 7 days
             </p>
           </div>
           <div className="flex items-center gap-4 text-xs">
@@ -197,11 +197,11 @@ export default function AdminDashboard() {
               Leads
             </span>
             <span className="flex items-center gap-1.5 text-gray-400">
-              <span className="w-3 h-3 rounded-sm bg-[#60A5FA] inline-block" />
+              <span className="w-3 h-3 rounded-sm bg-[#1F2937] inline-block" />
               Bookings
             </span>
             <span className="flex items-center gap-1.5 text-gray-400">
-              <span className="w-3 h-3 rounded-sm bg-[#A78BFA] inline-block" />
+              <span className="w-3 h-3 rounded-sm bg-[#FFFFFF] inline-block" />
               Subscribers
             </span>
           </div>
@@ -256,13 +256,13 @@ export default function AdminDashboard() {
               <Bar
                 dataKey="bookings"
                 name="Bookings"
-                fill="#60A5FA"
+                fill="#1F2937"
                 radius={[4, 4, 0, 0]}
               />
               <Bar
                 dataKey="subscribers"
                 name="Subscribers"
-                fill="#A78BFA"
+                fill="#FFFFFF"
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>

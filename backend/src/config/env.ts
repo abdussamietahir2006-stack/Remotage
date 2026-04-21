@@ -19,8 +19,11 @@ export const env = {
   CLOUDINARY_CLOUD_NAME: optional('CLOUDINARY_CLOUD_NAME', ''),
   CLOUDINARY_API_KEY:    optional('CLOUDINARY_API_KEY', ''),
   CLOUDINARY_API_SECRET: optional('CLOUDINARY_API_SECRET', ''),
-  ADMIN_EMAIL:           required('ADMIN_EMAIL'),
-  ADMIN_PASSWORD:        required('ADMIN_PASSWORD'),
   FRONTEND_URL:          optional('FRONTEND_URL', 'http://localhost:3000'),
   ALLOWED_ORIGINS:       optional('ALLOWED_ORIGINS', 'http://localhost:3000').split(','),
+  SMTP_HOST:             optional('SMTP_HOST', ''),
+  SMTP_PORT:             parseInt(optional('SMTP_PORT', '587'), 10),
+  SMTP_USER:             optional('SMTP_USER', ''),
+  SMTP_PASSWORD:         optional('SMTP_PASSWORD', ''),
+  SMTP_FROM:             optional('SMTP_FROM', 'noreply@remotage.com'),
 };

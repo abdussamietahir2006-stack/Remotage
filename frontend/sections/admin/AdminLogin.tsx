@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import api from "@/lib/api";
 
 export default function AdminLogin() {
@@ -140,6 +141,12 @@ export default function AdminLogin() {
               ) : "Sign In →"}
             </button>
           </form>
+
+          <div className="mt-6 text-center">
+            <Link href="/admin/forgot-password" className="text-gray-500 hover:text-[#D4AF37] transition text-xs">
+              Forgot password?
+            </Link>
+          </div>
 
           <p className="text-center text-gray-600 text-xs mt-6">Protected area — Remotage Admin Only</p>
         </div>
