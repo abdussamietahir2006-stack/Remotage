@@ -1,0 +1,156 @@
+Remotage(2)/
+├── PROJECT_STRUCTURE.md
+├── README.md
+├── ecosystem.config.js
+├── backend/
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── src/
+│   │   ├── server.ts
+│   │   ├── config/
+│   │   │   ├── db.ts
+│   │   │   └── env.ts
+│   │   ├── controllers/
+│   │   │   ├── analytics.controller.ts
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── bookings.controller.ts
+│   │   │   ├── cms.controller.ts
+│   │   │   ├── dashboard.controller.ts
+│   │   │   ├── leads.controller.ts
+│   │   │   └── subscribers.controller.ts
+│   │   ├── middleware/
+│   │   │   ├── auth.middleware.ts
+│   │   │   └── error.middleware.ts
+│   │   ├── models/
+│   │   │   ├── Admin.model.ts
+│   │   │   ├── Booking.model.ts
+│   │   │   ├── Lead.model.ts
+│   │   │   ├── PageContent.model.ts
+│   │   │   ├── PasswordReset.model.ts
+│   │   │   └── Subscriber.model.ts
+│   │   ├── routes/
+│   │   │   ├── analytics.routes.ts
+│   │   │   ├── auth.routes.ts
+│   │   │   ├── bookings.routes.ts
+│   │   │   ├── cms.routes.ts
+│   │   │   ├── dashboard.routes.ts
+│   │   │   ├── index.ts
+│   │   │   ├── leads.routes.ts
+│   │   │   └── subscribers.routes.ts
+│   │   ├── scripts/
+│   │   │   └── migrate-admins.ts
+│   │   ├── utils/
+│   │   │   ├── ApiError.ts
+│   │   │   ├── ApiResponse.ts
+│   │   │   └── asyncHandler.ts
+├── frontend/
+│   ├── PROJECT_STRUCTURE.md
+│   ├── README.md
+│   ├── eslint.config.mjs
+│   ├── next-env.d.ts
+│   ├── next.config.ts
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── tsconfig.json
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── about/
+│   │   │   └── page.tsx
+│   │   ├── admin/
+│   │   │   ├── page.tsx
+│   │   │   ├── dashboard/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── bookings/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── cms/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── about/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── contact/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── footer/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── home/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── navbar/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── services/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── leads/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── subscribers/
+│   │   │   │   │   └── page.tsx
+│   │   │   ├── forgot-password/
+│   │   │   │   └── page.tsx
+│   │   │   ├── reset-password/
+│   │   │   │   └── page.tsx
+│   │   ├── contact/
+│   │   │   └── page.tsx
+│   │   ├── services/
+│   │   │   └── page.tsx
+│   ├── components/
+│   │   ├── Footer.tsx
+│   │   ├── LayoutWrapper.tsx
+│   │   └── Navbar.tsx
+│   ├── lib/
+│   │   ├── api.ts
+│   │   └── cms.ts
+│   ├── public/
+│   ├── sections/
+│   │   ├── about/
+│   │   │   ├── AboutCTA.tsx
+│   │   │   ├── AboutHero.tsx
+│   │   │   ├── AboutMissionVision.tsx
+│   │   │   ├── AboutStats.tsx
+│   │   │   ├── AboutStory.tsx
+│   │   │   ├── AboutTeam.tsx
+│   │   │   └── AboutValues.tsx
+│   │   ├── admin/
+│   │   │   ├── AdminBookings.tsx
+│   │   │   ├── AdminCMS.tsx
+│   │   │   ├── AdminDashboard.tsx
+│   │   │   ├── AdminHeader.tsx
+│   │   │   ├── AdminLeads.tsx
+│   │   │   ├── AdminLogin.tsx
+│   │   │   ├── AdminSidebar.tsx
+│   │   │   ├── AdminSubscribers.tsx
+│   │   │   ├── ForgotPassword.tsx
+│   │   │   ├── ResetPassword.tsx
+│   │   │   ├── cms/
+│   │   │   │   ├── CMSAbout.tsx
+│   │   │   │   ├── CMSContact.tsx
+│   │   │   │   ├── CMSFooter.tsx
+│   │   │   │   ├── CMSHome.tsx
+│   │   │   │   ├── CMSNavbar.tsx
+│   │   │   │   ├── CMSServices.tsx
+│   │   │   │   └── ImageDropZone.tsx
+│   │   ├── contact/
+│   │   │   ├── ContactBooking.tsx
+│   │   │   ├── ContactFAQ.tsx
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── ContactHero.tsx
+│   │   ├── home/
+│   │   │   ├── Clients.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   ├── Newsletter.tsx
+│   │   │   ├── Process.tsx
+│   │   │   ├── ServicesPreview.tsx
+│   │   │   ├── Testimonials.tsx
+│   │   │   └── WhoWeHelp.tsx
+│   │   ├── services/
+│   │   │   ├── AdminSupport.tsx
+│   │   │   ├── ComparisonSection.tsx
+│   │   │   ├── CustomerSupport.tsx
+│   │   │   ├── FinanceBookkeeping.tsx
+│   │   │   ├── MarketingSocial.tsx
+│   │   │   ├── ServiceWebDev.tsx
+│   │   │   ├── ServicesCTA.tsx
+│   │   │   └── ServicesHero.tsx
+├── nginx/
+│   └── remotage.conf
+├── scripts/
+│   ├── deploy.sh
+│   └── vps-setup.sh
