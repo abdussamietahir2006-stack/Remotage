@@ -21,6 +21,7 @@ export default function AdminLogin() {
         password: form.password,
       });
       localStorage.setItem("adminToken", res.data.data.token);
+      document.cookie = `token=${res.data.data.token}; path=/; max-age=604800; SameSite=Lax`;
       router.push("/admin/dashboard");
     } catch {
       setStatus("error");
