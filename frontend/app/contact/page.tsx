@@ -5,9 +5,11 @@ import ContactBooking from "@/components/contact/ContactBooking";
 import ContactFAQ from "@/components/contact/ContactFAQ";
 
 export const metadata = {
-  title: "Contact | Remotage",
-  description: "Get in touch with Remotage. Book a free discovery call or send us a message.",
-};
+  title: "Contact",
+  description:
+    "Book a free discovery call with Remotage. No commitment required — let us show you how we can scale your business operations remotely.",
+  alternates: { canonical: "/contact" },
+}
 
 export default async function ContactPage() {
   const cms = await getPageContent('contact');

@@ -1,3 +1,4 @@
+
 import { getPageContent } from '@/lib/cms';
 import AboutHero from "@/components/about/AboutHero";
 import AboutStory from "@/components/about/AboutStory";
@@ -7,8 +8,10 @@ import AboutValues from "@/components/about/AboutValues";
 import AboutCTA from "@/components/about/AboutCTA";
 
 export const metadata = {
-  title: "About | Remotage",
-  description: "Learn about Remotage — who we are, our mission, and the team behind your remote advantage.",
+  title: "About",
+  description:
+    "Learn about Remotage — a remote-first team founded in 2023, helping 150+ businesses scale with expert virtual services and automation.",
+  alternates: { canonical: "/about" },
 };
 
 export default async function AboutPage() {
