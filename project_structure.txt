@@ -1,172 +1,161 @@
-Remotage(2)/
+frontend/
+├── .env.example
+├── .env.local
+├── .env.production
+├── .gitignore
+├── app
+│   ├── about
+│   │   └── page.tsx
+│   ├── admin
+│   │   ├── dashboard
+│   │   │   ├── bookings
+│   │   │   │   └── page.tsx
+│   │   │   ├── cms
+│   │   │   │   ├── about
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── contact
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── footer
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── home
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── navbar
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── services
+│   │   │   │       └── page.tsx
+│   │   │   ├── leads
+│   │   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── subscribers
+│   │   │       └── page.tsx
+│   │   ├── forgot-password
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── reset-password
+│   │       └── page.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   ├── forgot-password
+│   │   │   │   └── route.ts
+│   │   │   ├── login
+│   │   │   │   └── route.ts
+│   │   │   ├── reset-password
+│   │   │   │   └── route.ts
+│   │   │   ├── validate-reset-token
+│   │   │   │   └── route.ts
+│   │   │   └── verify
+│   │   │       └── route.ts
+│   │   ├── bookings
+│   │   │   ├── route.ts
+│   │   │   └── [id]
+│   │   │       ├── route.ts
+│   │   │       └── status
+│   │   │           └── route.ts
+│   │   ├── cms
+│   │   │   ├── upload
+│   │   │   │   └── image
+│   │   │   │       └── route.ts
+│   │   │   └── [pageSlug]
+│   │   │       └── route.ts
+│   │   ├── dashboard
+│   │   │   ├── stats
+│   │   │   │   └── route.ts
+│   │   │   └── weekly-chart
+│   │   │       └── route.ts
+│   │   ├── health
+│   │   │   └── route.ts
+│   │   ├── leads
+│   │   │   ├── route.ts
+│   │   │   └── [id]
+│   │   │       ├── route.ts
+│   │   │       └── status
+│   │   │           └── route.ts
+│   │   └── subscribers
+│   │       ├── route.ts
+│   │       └── [id]
+│   │           └── route.ts
+│   ├── contact
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── services
+│       └── page.tsx
+├── components
+│   ├── about
+│   │   ├── AboutCTA.tsx
+│   │   ├── AboutHero.tsx
+│   │   ├── AboutMissionVision.tsx
+│   │   ├── AboutStats.tsx
+│   │   ├── AboutStory.tsx
+│   │   ├── AboutTeam.tsx
+│   │   └── AboutValues.tsx
+│   ├── admin
+│   │   ├── AdminBookings.tsx
+│   │   ├── AdminCMS.tsx
+│   │   ├── AdminDashboard.tsx
+│   │   ├── AdminHeader.tsx
+│   │   ├── AdminLeads.tsx
+│   │   ├── AdminLogin.tsx
+│   │   ├── AdminSidebar.tsx
+│   │   ├── AdminSubscribers.tsx
+│   │   ├── cms
+│   │   │   ├── CMSAbout.tsx
+│   │   │   ├── CMSContact.tsx
+│   │   │   ├── CMSFooter.tsx
+│   │   │   ├── CMSHome.tsx
+│   │   │   ├── CMSNavbar.tsx
+│   │   │   ├── CMSServices.tsx
+│   │   │   └── ImageDropZone.tsx
+│   │   ├── ForgotPassword.tsx
+│   │   └── ResetPassword.tsx
+│   ├── contact
+│   │   ├── ContactBooking.tsx
+│   │   ├── ContactFAQ.tsx
+│   │   ├── ContactForm.tsx
+│   │   └── ContactHero.tsx
+│   ├── footer.tsx
+│   ├── home
+│   │   ├── Clients.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Newsletter.tsx
+│   │   ├── Process.tsx
+│   │   ├── ServicesPreview.tsx
+│   │   ├── Testimonials.tsx
+│   │   └── WhoWeHelp.tsx
+│   ├── LayoutWrapper.tsx
+│   ├── navbar.tsx
+│   └── services
+│       ├── AdminSupport.tsx
+│       ├── ComparisonSection.tsx
+│       ├── CustomerSupport.tsx
+│       ├── FinanceBookkeeping.tsx
+│       ├── MarketingSocial.tsx
+│       ├── ServicesCTA.tsx
+│       ├── ServicesHero.tsx
+│       └── ServiceWebDev.tsx
+├── eslint.config.mjs
+├── lib
+│   ├── api.ts
+│   ├── auth.ts
+│   ├── cms.ts
+│   ├── mongodb.ts
+│   └── response.ts
+├── middleware.ts
+├── models
+│   ├── Admin.ts
+│   └── index.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
 ├── PROJECT_STRUCTURE.md
+├── public
 ├── README.md
-├── ecosystem.config.js
-├── nginx/
-│   └── remotage.conf
-├── scripts/
-│   ├── deploy.sh
-│   └── vps-setup.sh
-└── frontend/
-    ├── PROJECT_STRUCTURE.md
-    ├── README.md
-    ├── eslint.config.mjs
-    ├── next-env.d.ts
-    ├── next.config.ts
-    ├── package.json
-    ├── postcss.config.mjs
-    ├── tsconfig.json
-    ├── .env.local
-    ├── .env.production
-    ├── app/
-    │   ├── favicon.ico
-    │   ├── globals.css
-    │   ├── layout.tsx
-    │   ├── page.tsx
-    │   ├── about/
-    │   │   └── page.tsx
-    │   ├── admin/
-    │   │   ├── page.tsx
-    │   │   ├── dashboard/
-    │   │   │   ├── page.tsx
-    │   │   │   ├── bookings/
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── cms/
-    │   │   │   │   ├── page.tsx
-    │   │   │   │   ├── about/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── contact/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── footer/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── home/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── navbar/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── services/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   ├── leads/
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── subscribers/
-    │   │   │   │   └── page.tsx
-    │   │   ├── forgot-password/
-    │   │   │   └── page.tsx
-    │   │   ├── reset-password/
-    │   │   │   └── page.tsx
-    │   ├── contact/
-    │   │   └── page.tsx
-    │   ├── services/
-    │   │   └── page.tsx
-    │   └── api/
-    │       ├── health/
-    │       │   └── route.ts
-    │       ├── auth/
-    │       │   ├── login/
-    │       │   │   └── route.ts
-    │       │   ├── verify/
-    │       │   │   └── route.ts
-    │       │   ├── forgot-password/
-    │       │   │   └── route.ts
-    │       │   ├── validate-reset-token/
-    │       │   │   └── route.ts
-    │       │   └── reset-password/
-    │       │       └── route.ts
-    │       ├── leads/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       ├── route.ts
-    │       │       └── status/
-    │       │           └── route.ts
-    │       ├── bookings/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       ├── route.ts
-    │       │       └── status/
-    │       │           └── route.ts
-    │       ├── subscribers/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       └── route.ts
-    │       ├── cms/
-    │       │   ├── upload/
-    │       │   │   └── image/
-    │       │   │       └── route.ts
-    │       │   └── [pageSlug]/
-    │       │       └── route.ts
-    │       └── dashboard/
-    │           ├── stats/
-    │           │   └── route.ts
-    │           └── weekly-chart/
-    │               └── route.ts
-    ├── components/
-    │   ├── Footer.tsx
-    │   ├── LayoutWrapper.tsx
-    │   └── Navbar.tsx
-    ├── lib/
-    │   ├── api.ts
-    │   ├── cms.ts
-    │   ├── db.ts
-    │   ├── env-config.ts
-    │   ├── auth-middleware.ts
-    │   ├── ApiError.ts
-    │   ├── ApiResponse.ts
-    │   └── models/
-    │       ├── Admin.model.ts
-    │       ├── Booking.model.ts
-    │       ├── Lead.model.ts
-    │       ├── PageContent.model.ts
-    │       ├── PasswordReset.model.ts
-    │       └── Subscriber.model.ts
-    ├── public/
-    ├── scripts/
-    │   └── migrate-admins.ts
-    └── sections/
-        ├── about/
-        │   ├── AboutCTA.tsx
-        │   ├── AboutHero.tsx
-        │   ├── AboutMissionVision.tsx
-        │   ├── AboutStats.tsx
-        │   ├── AboutStory.tsx
-        │   ├── AboutTeam.tsx
-        │   └── AboutValues.tsx
-        ├── admin/
-        │   ├── AdminBookings.tsx
-        │   ├── AdminCMS.tsx
-        │   ├── AdminDashboard.tsx
-        │   ├── AdminHeader.tsx
-        │   ├── AdminLeads.tsx
-        │   ├── AdminLogin.tsx
-        │   ├── AdminSidebar.tsx
-        │   ├── AdminSubscribers.tsx
-        │   ├── ForgotPassword.tsx
-        │   ├── ResetPassword.tsx
-        │   └── cms/
-        │       ├── CMSAbout.tsx
-        │       ├── CMSContact.tsx
-        │       ├── CMSFooter.tsx
-        │       ├── CMSHome.tsx
-        │       ├── CMSNavbar.tsx
-        │       ├── CMSServices.tsx
-        │       └── ImageDropZone.tsx
-        ├── contact/
-        │   ├── ContactBooking.tsx
-        │   ├── ContactFAQ.tsx
-        │   ├── ContactForm.tsx
-        │   └── ContactHero.tsx
-        ├── home/
-        │   ├── Clients.tsx
-        │   ├── Hero.tsx
-        │   ├── Newsletter.tsx
-        │   ├── Process.tsx
-        │   ├── ServicesPreview.tsx
-        │   ├── Testimonials.tsx
-        │   └── WhoWeHelp.tsx
-        └── services/
-            ├── AdminSupport.tsx
-            ├── ComparisonSection.tsx
-            ├── CustomerSupport.tsx
-            ├── FinanceBookkeeping.tsx
-            ├── MarketingSocial.tsx
-            ├── ServiceWebDev.tsx
-            ├── ServicesCTA.tsx
-            └── ServicesHero.tsx
+├── scripts
+│   ├── build-tree.js
+│   └── migrate-admins.ts
+└── tsconfig.json

@@ -1,37 +1,42 @@
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from 'jose';
 import { ApiError } from '@/lib/response';
 
-const SECRET = process.env.JWT_SECRET || 'remotage_jwt_secret_key_2024';
+const SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET || 'remotage_jwt_secret_key_2024'
+);
 
 export interface DecodedAdmin {
   email: string;
   role: string;
 }
 
-export function signToken(payload: DecodedAdmin) {
-  return jwt.sign(payload, SECRET, { expiresIn: '7d' });
+// ── used in API routes (server) ──────────────────────────────
+export async function signToken(payload: DecodedAdmin): Promise<string> {
+  return new SignJWT({ ...payload })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('7d')
+    .sign(SECRET);
 }
 
-export function verifyToken(token: string): DecodedAdmin | null {
+// ── Edge-safe — used in middleware too ──────────────────────
+export async function verifyToken(token: string): Promise<DecodedAdmin | null> {
   try {
-    return jwt.verify(token, SECRET) as DecodedAdmin;
+    const { payload } = await jwtVerify(token, SECRET);
+    return { email: payload.email as string, role: payload.role as string };
   } catch {
     return null;
   }
 }
 
-export function authenticate(request: Request): DecodedAdmin {
+export async function authenticate(request: Request): Promise<DecodedAdmin> {
   const authHeader = request.headers.get('authorization');
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  if (!authHeader?.startsWith('Bearer ')) {
     throw new ApiError(401, 'No token provided.');
   }
 
   const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, SECRET) as DecodedAdmin;
-    return { email: decoded.email, role: decoded.role };
-  } catch {
-    throw new ApiError(401, 'Invalid or expired token.');
-  }
+  const decoded = await verifyToken(token);
+  if (!decoded) throw new ApiError(401, 'Invalid or expired token.');
+  return decoded;
 }
