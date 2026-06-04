@@ -38,7 +38,7 @@ export default function Footer() {
   const [footer, setFooter] = useState<FooterContent>(defaults);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/cms/footer`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/cms/footer`)
       .then(r => r.json())
       .then(data => {
         if (data?.data?.content) setFooter(prev => ({ ...prev, ...data.data.content }));

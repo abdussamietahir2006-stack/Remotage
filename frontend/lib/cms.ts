@@ -1,13 +1,17 @@
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+import { dbConnect } from '@/lib/backend/db';
+import { PageContent } from '@/lib/backend/models/PageContent.model';
 
 export async function getPageContent(pageSlug: string) {
   try {
-    const res = await fetch(`${API}/api/cms/${pageSlug}`, {
-      next: { revalidate: 60 },
-    });
-    const data = await res.json();
-    return data.data ?? { pageSlug, content: {}, images: {} };
-  } catch {
-    return { pageSlug, content: {}, images: {} };
+    await dbConnect();
+    const page = await PageContent.findOne({ pageSlug }).lean();
+    if (page) {
+      // Safe serialization for Next.js Server Components
+      return JSON.parse(JSON.stringify(page));
+    }
+    return { pageSlug, content: {}, images: {}, sections: [] };
+  } catch (error) {
+    console.error(`Error fetching page content for ${pageSlug}:`, error);
+    return { pageSlug, content: {}, images: {}, sections: [] };
   }
 }

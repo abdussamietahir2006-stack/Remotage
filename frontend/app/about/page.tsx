@@ -4,7 +4,6 @@ import AboutStory from "@/sections/about/AboutStory";
 import AboutMissionVision from "@/sections/about/AboutMissionVision";
 import AboutStats from "@/sections/about/AboutStats";
 import AboutValues from "@/sections/about/AboutValues";
-import AboutTeam from "@/sections/about/AboutTeam";
 import AboutCTA from "@/sections/about/AboutCTA";
 
 export const metadata = {
@@ -15,7 +14,7 @@ export const metadata = {
 export default async function AboutPage() {
   const cms = await getPageContent('about');
   const content = (cms?.content as Record<string, string>) ?? {};
-  const images  = (cms?.images  as Record<string, string>) ?? {};
+  const images = (cms?.images as Record<string, string>) ?? {};
 
   return (
     <main>
@@ -24,7 +23,6 @@ export default async function AboutPage() {
       <AboutStory content={content} images={images} />
       <AboutMissionVision content={content} />
       <AboutValues />
-      <AboutTeam content={content} images={images} />
       <AboutCTA />
     </main>
   );

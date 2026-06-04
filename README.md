@@ -11,13 +11,6 @@ Remote-first business services platform.
 ## Local Development
 
 ```bash
-# Terminal 1 - Backend
-cd backend
-npm install
-npm run dev
-# Runs on http://localhost:5000
-
-# Terminal 2 - Frontend
 cd frontend
 npm install
 npm run dev
@@ -40,7 +33,6 @@ bash /var/www/remotage/scripts/vps-setup.sh
 
 ### 3. Upload environment files from your local machine
 ```bash
-scp backend/.env.production root@YOUR_VPS_IP:/var/www/remotage/backend/.env
 scp frontend/.env.production root@YOUR_VPS_IP:/var/www/remotage/frontend/.env.production
 ```
 
@@ -55,13 +47,12 @@ cd /var/www/remotage/frontend && npm run build && pm2 reload remotage-frontend
 |------|------|--------------|
 | A    | @    | YOUR_VPS_IP  |
 | A    | www  | YOUR_VPS_IP  |
-| A    | api  | YOUR_VPS_IP  |
 
 Wait 15-30 minutes for DNS to propagate.
 
 ### 6. Install SSL certificates
 ```bash
-sudo certbot --nginx -d remotage.com -d www.remotage.com -d api.remotage.com
+sudo certbot --nginx -d remotage.com -d www.remotage.com
 ```
 
 ---
@@ -85,10 +76,8 @@ bash scripts/deploy.sh
 ```bash
 # PM2
 pm2 list                        # view processes
-pm2 logs remotage-backend       # backend logs
-pm2 logs remotage-frontend      # frontend logs
-pm2 reload remotage-backend     # reload backend
-pm2 reload remotage-frontend    # reload frontend
+pm2 logs remotage-frontend      # app logs
+pm2 reload remotage-frontend    # reload app
 
 # Nginx
 sudo nginx -t                   # test config

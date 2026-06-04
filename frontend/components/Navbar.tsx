@@ -26,7 +26,7 @@ export default function Navbar() {
   const [nav, setNav]         = useState<NavContent>(defaults);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/cms/navbar`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/cms/navbar`)
       .then(r => r.json())
       .then(data => {
         if (data?.data?.content) setNav(prev => ({ ...prev, ...data.data.content }));
