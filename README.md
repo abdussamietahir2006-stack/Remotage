@@ -83,149 +83,182 @@ The project is structured as a **monorepo** with a dedicated `frontend` (Next.js
 ## 🏗️ Project Structure
 
 ```
-Remotage/
-├── ecosystem.config.js               # PM2 process manager config
+Remotage(2)/
 ├── PROJECT_STRUCTURE.md
 ├── README.md
-│
-├── backend/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       ├── server.ts                 # Express app entry point
-│       ├── config/
-│       │   ├── db.ts                 # MongoDB connection
-│       │   └── env.ts                # Environment variable loader
-│       ├── controllers/
-│       │   ├── analytics.controller.ts
-│       │   ├── auth.controller.ts
-│       │   ├── bookings.controller.ts
-│       │   ├── cms.controller.ts
-│       │   ├── dashboard.controller.ts
-│       │   ├── leads.controller.ts
-│       │   └── subscribers.controller.ts
-│       ├── middleware/
-│       │   ├── auth.middleware.ts    # JWT protection
-│       │   └── error.middleware.ts
-│       ├── models/
-│       │   ├── Admin.model.ts
-│       │   ├── Booking.model.ts
-│       │   ├── Lead.model.ts
-│       │   ├── PageContent.model.ts
-│       │   ├── PasswordReset.model.ts
-│       │   └── Subscriber.model.ts
-│       ├── routes/
-│       │   ├── index.ts              # Route aggregator
-│       │   ├── analytics.routes.ts
-│       │   ├── auth.routes.ts
-│       │   ├── bookings.routes.ts
-│       │   ├── cms.routes.ts
-│       │   ├── dashboard.routes.ts
-│       │   ├── leads.routes.ts
-│       │   └── subscribers.routes.ts
-│       ├── scripts/
-│       │   └── migrate-admins.ts
-│       └── utils/
-│           ├── ApiError.ts
-│           ├── ApiResponse.ts
-│           └── asyncHandler.ts
-│
-├── frontend/
-│   ├── next.config.ts
-│   ├── tsconfig.json
-│   ├── package.json
-│   ├── postcss.config.mjs
-│   ├── eslint.config.mjs
-│   ├── app/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx                  # Home
-│   │   ├── globals.css
-│   │   ├── about/page.tsx
-│   │   ├── services/page.tsx
-│   │   ├── contact/page.tsx
-│   │   └── admin/
-│   │       ├── page.tsx              # Admin login
-│   │       ├── forgot-password/page.tsx
-│   │       ├── reset-password/page.tsx
-│   │       └── dashboard/
-│   │           ├── page.tsx          # Dashboard overview
-│   │           ├── bookings/page.tsx
-│   │           ├── leads/page.tsx
-│   │           ├── subscribers/page.tsx
-│   │           └── cms/
-│   │               ├── page.tsx
-│   │               ├── home/page.tsx
-│   │               ├── about/page.tsx
-│   │               ├── services/page.tsx
-│   │               ├── contact/page.tsx
-│   │               ├── navbar/page.tsx
-│   │               └── footer/page.tsx
-│   ├── components/
-│   │   ├── Navbar.tsx
-│   │   ├── Footer.tsx
-│   │   └── LayoutWrapper.tsx
-│   ├── lib/
-│   │   ├── api.ts                    # Axios API client
-│   │   └── cms.ts                    # CMS helper utilities
-│   ├── sections/
-│   │   ├── home/
-│   │   │   ├── Hero.tsx
-│   │   │   ├── ServicesPreview.tsx
-│   │   │   ├── WhoWeHelp.tsx
-│   │   │   ├── Process.tsx
-│   │   │   ├── Clients.tsx
-│   │   │   ├── Testimonials.tsx
-│   │   │   └── Newsletter.tsx
-│   │   ├── about/
-│   │   │   ├── AboutHero.tsx
-│   │   │   ├── AboutStory.tsx
-│   │   │   ├── AboutMissionVision.tsx
-│   │   │   ├── AboutValues.tsx
-│   │   │   ├── AboutStats.tsx
-│   │   │   ├── AboutTeam.tsx
-│   │   │   └── AboutCTA.tsx
-│   │   ├── services/
-│   │   │   ├── ServicesHero.tsx
-│   │   │   ├── ServiceWebDev.tsx
-│   │   │   ├── AdminSupport.tsx
-│   │   │   ├── MarketingSocial.tsx
-│   │   │   ├── FinanceBookkeeping.tsx
-│   │   │   ├── CustomerSupport.tsx
-│   │   │   ├── ComparisonSection.tsx
-│   │   │   └── ServicesCTA.tsx
-│   │   ├── contact/
-│   │   │   ├── ContactHero.tsx
-│   │   │   ├── ContactForm.tsx
-│   │   │   ├── ContactBooking.tsx
-│   │   │   └── ContactFAQ.tsx
-│   │   └── admin/
-│   │       ├── AdminLogin.tsx
-│   │       ├── AdminDashboard.tsx
-│   │       ├── AdminHeader.tsx
-│   │       ├── AdminSidebar.tsx
-│   │       ├── AdminBookings.tsx
-│   │       ├── AdminLeads.tsx
-│   │       ├── AdminSubscribers.tsx
-│   │       ├── AdminCMS.tsx
-│   │       ├── ForgotPassword.tsx
-│   │       ├── ResetPassword.tsx
-│   │       └── cms/
-│   │           ├── CMSHome.tsx
-│   │           ├── CMSAbout.tsx
-│   │           ├── CMSServices.tsx
-│   │           ├── CMSContact.tsx
-│   │           ├── CMSNavbar.tsx
-│   │           ├── CMSFooter.tsx
-│   │           └── ImageDropZone.tsx
-│   └── public/
-│
+├── ecosystem.config.js
 ├── nginx/
-│   └── remotage.conf                 # Nginx reverse proxy config
-└── scripts/
-    ├── deploy.sh                     # Automated deploy script
-    └── vps-setup.sh                  # VPS initial setup script
-```
-
+│   └── remotage.conf
+├── scripts/
+│   ├── deploy.sh
+│   └── vps-setup.sh
+└── frontend/
+    ├── PROJECT_STRUCTURE.md
+    ├── README.md
+    ├── eslint.config.mjs
+    ├── next-env.d.ts
+    ├── next.config.ts
+    ├── package.json
+    ├── postcss.config.mjs
+    ├── tsconfig.json
+    ├── .env.local
+    ├── .env.production
+    ├── app/
+    │   ├── favicon.ico
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── about/
+    │   │   └── page.tsx
+    │   ├── admin/
+    │   │   ├── page.tsx
+    │   │   ├── dashboard/
+    │   │   │   ├── page.tsx
+    │   │   │   ├── bookings/
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── cms/
+    │   │   │   │   ├── page.tsx
+    │   │   │   │   ├── about/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── contact/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── footer/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── home/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── navbar/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── services/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   ├── leads/
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── subscribers/
+    │   │   │   │   └── page.tsx
+    │   │   ├── forgot-password/
+    │   │   │   └── page.tsx
+    │   │   ├── reset-password/
+    │   │   │   └── page.tsx
+    │   ├── contact/
+    │   │   └── page.tsx
+    │   ├── services/
+    │   │   └── page.tsx
+    │   └── api/
+    │       ├── health/
+    │       │   └── route.ts
+    │       ├── auth/
+    │       │   ├── login/
+    │       │   │   └── route.ts
+    │       │   ├── verify/
+    │       │   │   └── route.ts
+    │       │   ├── forgot-password/
+    │       │   │   └── route.ts
+    │       │   ├── validate-reset-token/
+    │       │   │   └── route.ts
+    │       │   └── reset-password/
+    │       │       └── route.ts
+    │       ├── leads/
+    │       │   ├── route.ts
+    │       │   └── [id]/
+    │       │       ├── route.ts
+    │       │       └── status/
+    │       │           └── route.ts
+    │       ├── bookings/
+    │       │   ├── route.ts
+    │       │   └── [id]/
+    │       │       ├── route.ts
+    │       │       └── status/
+    │       │           └── route.ts
+    │       ├── subscribers/
+    │       │   ├── route.ts
+    │       │   └── [id]/
+    │       │       └── route.ts
+    │       ├── cms/
+    │       │   ├── upload/
+    │       │   │   └── image/
+    │       │   │       └── route.ts
+    │       │   └── [pageSlug]/
+    │       │       └── route.ts
+    │       └── dashboard/
+    │           ├── stats/
+    │           │   └── route.ts
+    │           └── weekly-chart/
+    │               └── route.ts
+    ├── components/
+    │   ├── Footer.tsx
+    │   ├── LayoutWrapper.tsx
+    │   └── Navbar.tsx
+    ├── lib/
+    │   ├── api.ts
+    │   ├── cms.ts
+    │   └── backend/
+    │       ├── db.ts
+    │       ├── config/
+    │       │   └── env.ts
+    │       ├── middleware/
+    │       │   └── auth.ts
+    │       ├── utils/
+    │       │   ├── ApiError.ts
+    │       │   └── ApiResponse.ts
+    │       └── models/
+    │           ├── Admin.model.ts
+    │           ├── Booking.model.ts
+    │           ├── Lead.model.ts
+    │           ├── PageContent.model.ts
+    │           ├── PasswordReset.model.ts
+    │           └── Subscriber.model.ts
+    ├── public/
+    ├── scripts/
+    │   └── migrate-admins.ts
+    └── sections/
+        ├── about/
+        │   ├── AboutCTA.tsx
+        │   ├── AboutHero.tsx
+        │   ├── AboutMissionVision.tsx
+        │   ├── AboutStats.tsx
+        │   ├── AboutStory.tsx
+        │   ├── AboutTeam.tsx
+        │   └── AboutValues.tsx
+        ├── admin/
+        │   ├── AdminBookings.tsx
+        │   ├── AdminCMS.tsx
+        │   ├── AdminDashboard.tsx
+        │   ├── AdminHeader.tsx
+        │   ├── AdminLeads.tsx
+        │   ├── AdminLogin.tsx
+        │   ├── AdminSidebar.tsx
+        │   ├── AdminSubscribers.tsx
+        │   ├── ForgotPassword.tsx
+        │   ├── ResetPassword.tsx
+        │   └── cms/
+        │       ├── CMSAbout.tsx
+        │       ├── CMSContact.tsx
+        │       ├── CMSFooter.tsx
+        │       ├── CMSHome.tsx
+        │       ├── CMSNavbar.tsx
+        │       ├── CMSServices.tsx
+        │       └── ImageDropZone.tsx
+        ├── contact/
+        │   ├── ContactBooking.tsx
+        │   ├── ContactFAQ.tsx
+        │   ├── ContactForm.tsx
+        │   └── ContactHero.tsx
+        ├── home/
+        │   ├── Clients.tsx
+        │   ├── Hero.tsx
+        │   ├── Newsletter.tsx
+        │   ├── Process.tsx
+        │   ├── ServicesPreview.tsx
+        │   ├── Testimonials.tsx
+        │   └── WhoWeHelp.tsx
+        └── services/
+            ├── AdminSupport.tsx
+            ├── ComparisonSection.tsx
+            ├── CustomerSupport.tsx
+            ├── FinanceBookkeeping.tsx
+            ├── MarketingSocial.tsx
+            ├── ServiceWebDev.tsx
+            ├── ServicesCTA.tsx
+            └── ServicesHero.tsx
 ---
 
 ## 🚀 Quick Start
@@ -243,28 +276,8 @@ git clone https://github.com/abdussamietahir2006-stack/Remotage.git
 cd Remotage
 ```
 
-### 2. Backend Setup
 
-```bash
-cd backend
-npm install
-```
 
-Create `.env` in the `backend/` folder:
-
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_strong_random_secret_min_32_chars
-JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:3000
-```
-
-Start the backend:
-
-```bash
-npm run dev
-```
 
 ### 3. Frontend Setup
 
@@ -276,7 +289,11 @@ npm install
 Create `.env.local` in the `frontend/` folder:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_strong_random_secret_min_32_chars
+JWT_EXPIRES_IN=7d
+CLIENT_URL=http://localhost:3000
 ```
 
 Start the frontend:
