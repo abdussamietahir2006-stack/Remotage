@@ -1,89 +1,105 @@
 # Remotage
 
-Remote-first business services platform.
+A modern full-stack web application built with Next.js.
 
-- **Frontend:** https://remotage.com
-- **API:** https://api.remotage.com
-- **Admin:** https://remotage.com/admin
+## 🚀 Features
 
----
+- Modern responsive UI
+- Next.js App Router
+- React components
+- API routes
+- Authentication system
+- Admin dashboard
+- Database integration
+- Secure backend logic
+- Optimized production build
 
-## Local Development
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- Next.js API Routes
+- Node.js
+- MongoDB
+- Mongoose
+
+### Other Tools
+- Git
+- GitHub
+- Vercel
+
+## 📁 Project Structure
+
+
+Remotage
+│
+├── frontend
+│ ├── app
+│ ├── components
+│ ├── lib
+│ ├── models
+│ ├── public
+│ ├── package.json
+│ └── next.config.ts
+│
+└── README.md
+
+
+## ⚙️ Installation
+
+Clone the repository:
 
 ```bash
+git clone https://github.com/abdussamietahir2006-stack/Remotage.git
+
+Go into the project:
+
+cd Remotage
+
+Go to frontend:
+
 cd frontend
+
+Install dependencies:
+
 npm install
+🔐 Environment Variables
+
+Create a .env.local file inside the frontend folder:
+
+MONGODB_URI=your_mongodb_connection
+NEXTAUTH_SECRET=your_secret
+NEXT_PUBLIC_API_URL=http://localhost:3000
+
+Add any other required environment variables depending on your setup.
+
+▶️ Run Development Server
 npm run dev
-# Runs on http://localhost:3000
-```
 
----
+Open:
 
-## First-Time VPS Deployment
+http://localhost:3000
+🏗️ Build For Production
+npm run build
 
-### 1. SSH into your VPS
-```bash
-ssh root@YOUR_VPS_IP
-```
+Start production server:
 
-### 2. Run the setup script (runs once)
-```bash
-bash /var/www/remotage/scripts/vps-setup.sh
-```
+npm start
+🚀 Deployment
 
-### 3. Upload environment files from your local machine
-```bash
-scp frontend/.env.production root@YOUR_VPS_IP:/var/www/remotage/frontend/.env.production
-```
+This project can be deployed using:
 
-### 4. Rebuild frontend with production env
-```bash
-ssh root@YOUR_VPS_IP
-cd /var/www/remotage/frontend && npm run build && pm2 reload remotage-frontend
-```
+Vercel
+Any Node.js hosting platform
+👨‍💻 Author
 
-### 5. Add DNS A records in Hostinger panel
-| Type | Name | Value        |
-|------|------|--------------|
-| A    | @    | YOUR_VPS_IP  |
-| A    | www  | YOUR_VPS_IP  |
+Abdus Samie Tahir
 
-Wait 15-30 minutes for DNS to propagate.
+📄 License
 
-### 6. Install SSL certificates
-```bash
-sudo certbot --nginx -d remotage.com -d www.remotage.com
-```
-
----
-
-## Every Future Deploy
-
-```bash
-# Push code to GitHub first
-git add .
-git commit -m "your message"
-git push origin main
-
-# Then deploy to VPS
-bash scripts/deploy.sh
-```
-
----
-
-## Useful Commands
-
-```bash
-# PM2
-pm2 list                        # view processes
-pm2 logs remotage-frontend      # app logs
-pm2 reload remotage-frontend    # reload app
-
-# Nginx
-sudo nginx -t                   # test config
-sudo systemctl restart nginx    # restart nginx
-sudo systemctl status nginx     # check status
-
-# Certbot SSL renewal
-sudo certbot renew --dry-run    # test renewal
-```
+This project is for personal and commercial use.
