@@ -1,11 +1,12 @@
 <div align="center">
 
-<h1>Remotage 🚀</h1>
+<h1>REMOTAGE 🌐</h1>
 
-<p>A professional full-stack startup website built with a modern MERN architecture — featuring a CMS-powered admin dashboard, booking system, lead management, analytics, and production-ready deployment.</p>
+<p><strong>Your Remote Advantage.</strong><br/>
+Scale faster with expert-led digital services, automation, and remote execution.</p>
 
-[![GitHub](https://img.shields.io/badge/GitHub-Remotage-181717?style=for-the-badge&logo=github)](https://github.com/abdussamietahir2006-stack/Remotage)
-[![Status](https://img.shields.io/badge/Status-In%20Development-f59e0b?style=for-the-badge)]()
+[![Website](https://img.shields.io/badge/Website-remotage.com-0ea5e9?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.remotage.com)
+[![Status](https://img.shields.io/badge/Status-Live-22c55e?style=for-the-badge)]()
 [![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)]()
 [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)]()
@@ -16,65 +17,72 @@
 
 ## 🌿 What is Remotage?
 
-**Remotage** is a professional startup website with a full MERN stack architecture — built for businesses that need a polished public-facing site *and* a powerful backend admin panel in one monorepo.
+**Remotage** is a remote-first virtual services company helping startups, SMBs, and industry professionals scale faster — without hiring full in-house teams. The platform offers expert-led remote execution across lead generation, customer support, marketing, bookkeeping, web development, CRM management, real estate services, and more.
 
-The project is structured as a **monorepo** with a dedicated `frontend` (Next.js) and `backend` (Node.js/Express), a production Nginx config, PM2 process management, and automated VPS deploy scripts.
+This repository is the full-stack Next.js application that powers [remotage.com](https://www.remotage.com) — a **single Next.js app** with a public marketing site, built-in API routes (no separate backend), MongoDB integration, CMS-powered admin dashboard, booking system, lead management, analytics, and a complete password reset flow.
+
+> *"Your remote advantage — helping businesses scale faster with expert digital services, automation, and execution."*
 
 ---
 
 ## ✨ Features
 
 ### Public Website
-- 🏠 **Home** — Hero, services preview, who we help, process, clients, testimonials, newsletter
-- 👤 **About** — Hero, story, mission & vision, values, stats, team, CTA
-- 🛠️ **Services** — Web dev, admin support, marketing & social, finance & bookkeeping, customer support, comparison section, CTA
-- 📬 **Contact** — Contact form, booking/call scheduler, FAQ, hero
+- 🏠 **Home** — Hero, 8-service preview, who we assist, 4-step process, client logos, testimonials, newsletter signup
+- 👤 **About** — Story, live stats (150+ clients, $2M+ revenue, 98% satisfaction, 24/7 support), mission & vision, 6 core values, team, CTA
+- 🛠️ **Services** — Detailed service pages, Remotage vs DIY comparison table, Real Estate specialist section
+- 📬 **Contact** — Contact form, book a call, FAQ
+
+### Services Offered (Live on Site)
+| # | Service | What We Handle |
+|---|---------|----------------|
+| 01 | **Lead Generation** | Outreach, pipeline filling, prospect qualification |
+| 02 | **Customer Support** | Email, chat, phone; orders, returns, feedback, complaints |
+| 03 | **Marketing & Social Media** | Blog content, posts, scheduling, analytics, influencer outreach |
+| 04 | **Finance & Bookkeeping** | Invoicing, expense tracking, financial summaries & reports |
+| 05 | **Real Estate Services** | FSBO calling, expired leads, cold calling, appointment setting |
+| 06 | **Web Development** | Custom sites, landing pages, e-commerce, SEO, maintenance |
+| 07 | **CRM Management** | CRM setup, pipeline management, client follow-up |
+| 08 | **Online Reputation Management** | Brand monitoring, review management, reputation building |
 
 ### Admin Dashboard (`/admin`)
-- 🔐 **JWT Authentication** — Secure login, forgot password, reset password flow
-- 📊 **Dashboard** — Live stats overview with analytics
-- 📅 **Bookings** — View and manage booking requests
-- 👥 **Leads** — Contact form submissions
+- 🔐 **JWT Authentication** — Secure login, forgot password & reset password flow, token validation
+- 📊 **Dashboard** — Live stats + weekly chart (auto-refresh)
+- 📅 **Bookings** — View, manage, and update booking status
+- 👥 **Leads** — Contact form submissions with status management
 - 📧 **Subscribers** — Newsletter subscriber list
-- ✏️ **CMS** — Full content editor for every page section:
-  - Home, About, Services, Contact, Navbar, Footer
-  - Drag & drop image upload (`ImageDropZone`)
+- ✏️ **CMS** — Per-page content editor for Home, About, Services, Contact, Navbar, and Footer — with drag & drop image upload
+- 🖼️ **Image Upload** — Dedicated `/api/cms/upload/image` endpoint
 
-### Backend API
-- RESTful API with Express + TypeScript
-- JWT auth with middleware protection
-- Password reset flow (token-based)
-- Analytics controller
-- Structured error handling (`ApiError`, `ApiResponse`, `asyncHandler`)
-- Admin migration script
+### API Routes (Built-in — Next.js App Router)
+All backend logic lives inside `app/api/` — no separate server required.
 
-### DevOps & Deployment
-- 🖥️ **VPS deployment** with Nginx reverse proxy
-- ⚙️ **PM2** process manager (`ecosystem.config.js`)
-- 📜 **Shell scripts** for deploy and VPS setup automation
-- Nginx config included (`nginx/remotage.conf`)
+### Infrastructure
+- 🔒 `middleware.ts` — Route protection for all `/admin/dashboard/*` paths
+- 🗄️ `lib/mongodb.ts` — MongoDB connection with connection pooling
+- 🛡️ `lib/auth.ts` — JWT utilities
+- 📡 `lib/api.ts` — Axios API client
+- 📄 `lib/cms.ts` — CMS helper utilities
+- 📦 `lib/response.ts` — Standardized API response helpers
+- 🧬 `models/Admin.ts` — Mongoose Admin model
+- 🔧 `scripts/migrate-admins.ts` — Admin migration script
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Framework & Language
 ![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs)
 ![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### Backend
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000?style=for-the-badge&logo=express&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+### Database & Auth
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongodb&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=jsonwebtokens)
 
-### DevOps & Infrastructure
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
-![PM2](https://img.shields.io/badge/PM2-2B037A?style=for-the-badge&logo=pm2&logoColor=white)
+### Deployment
 ![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github)
 
@@ -83,182 +91,148 @@ The project is structured as a **monorepo** with a dedicated `frontend` (Next.js
 ## 🏗️ Project Structure
 
 ```
-Remotage(2)/
-├── PROJECT_STRUCTURE.md
-├── README.md
-├── ecosystem.config.js
-├── nginx/
-│   └── remotage.conf
+frontend/
+├── .env.example
+├── .env.local                        # Local dev environment variables
+├── .env.production                   # Production environment variables
+├── middleware.ts                     # Next.js middleware — protects /admin/dashboard/*
+├── next.config.ts
+├── tsconfig.json
+├── package.json
+│
+├── app/
+│   ├── layout.tsx                    # Root layout
+│   ├── page.tsx                      # Home page
+│   ├── globals.css
+│   ├── favicon.ico
+│   │
+│   ├── about/page.tsx
+│   ├── services/page.tsx
+│   ├── contact/page.tsx
+│   │
+│   ├── admin/
+│   │   ├── page.tsx                  # Admin login
+│   │   ├── forgot-password/page.tsx
+│   │   ├── reset-password/page.tsx
+│   │   └── dashboard/
+│   │       ├── page.tsx              # Dashboard overview
+│   │       ├── bookings/page.tsx
+│   │       ├── leads/page.tsx
+│   │       ├── subscribers/page.tsx
+│   │       └── cms/
+│   │           ├── page.tsx          # CMS landing
+│   │           ├── home/page.tsx
+│   │           ├── about/page.tsx
+│   │           ├── services/page.tsx
+│   │           ├── contact/page.tsx
+│   │           ├── navbar/page.tsx
+│   │           └── footer/page.tsx
+│   │
+│   └── api/                          # Next.js API Routes (built-in backend)
+│       ├── health/route.ts           # Health check endpoint
+│       ├── auth/
+│       │   ├── login/route.ts
+│       │   ├── verify/route.ts
+│       │   ├── forgot-password/route.ts
+│       │   ├── reset-password/route.ts
+│       │   └── validate-reset-token/route.ts
+│       ├── bookings/
+│       │   ├── route.ts              # GET all / POST new booking
+│       │   └── [id]/
+│       │       ├── route.ts          # GET / DELETE by ID
+│       │       └── status/route.ts   # PATCH booking status
+│       ├── cms/
+│       │   ├── [pageSlug]/route.ts   # GET / PUT page content
+│       │   └── upload/image/route.ts # POST image upload
+│       ├── dashboard/
+│       │   ├── stats/route.ts        # GET dashboard stats
+│       │   └── weekly-chart/route.ts # GET weekly chart data
+│       ├── leads/
+│       │   ├── route.ts              # GET all / POST new lead
+│       │   └── [id]/
+│       │       ├── route.ts          # GET / DELETE by ID
+│       │       └── status/route.ts   # PATCH lead status
+│       └── subscribers/
+│           ├── route.ts              # GET all / POST subscribe
+│           └── [id]/route.ts         # DELETE subscriber
+│
+├── components/
+│   ├── navbar.tsx
+│   ├── footer.tsx
+│   ├── LayoutWrapper.tsx
+│   │
+│   ├── home/
+│   │   ├── Hero.tsx
+│   │   ├── ServicesPreview.tsx
+│   │   ├── WhoWeHelp.tsx
+│   │   ├── Process.tsx
+│   │   ├── Clients.tsx
+│   │   ├── Testimonials.tsx
+│   │   └── Newsletter.tsx
+│   │
+│   ├── about/
+│   │   ├── AboutHero.tsx
+│   │   ├── AboutStory.tsx
+│   │   ├── AboutMissionVision.tsx
+│   │   ├── AboutValues.tsx
+│   │   ├── AboutStats.tsx
+│   │   ├── AboutTeam.tsx
+│   │   └── AboutCTA.tsx
+│   │
+│   ├── services/
+│   │   ├── ServicesHero.tsx
+│   │   ├── ServiceWebDev.tsx
+│   │   ├── AdminSupport.tsx
+│   │   ├── MarketingSocial.tsx
+│   │   ├── FinanceBookkeeping.tsx
+│   │   ├── CustomerSupport.tsx
+│   │   ├── ComparisonSection.tsx
+│   │   └── ServicesCTA.tsx
+│   │
+│   ├── contact/
+│   │   ├── ContactHero.tsx
+│   │   ├── ContactForm.tsx
+│   │   ├── ContactBooking.tsx
+│   │   └── ContactFAQ.tsx
+│   │
+│   └── admin/
+│       ├── AdminLogin.tsx
+│       ├── AdminDashboard.tsx
+│       ├── AdminHeader.tsx
+│       ├── AdminSidebar.tsx
+│       ├── AdminBookings.tsx
+│       ├── AdminLeads.tsx
+│       ├── AdminSubscribers.tsx
+│       ├── AdminCMS.tsx
+│       ├── ForgotPassword.tsx
+│       ├── ResetPassword.tsx
+│       └── cms/
+│           ├── CMSHome.tsx
+│           ├── CMSAbout.tsx
+│           ├── CMSServices.tsx
+│           ├── CMSContact.tsx
+│           ├── CMSNavbar.tsx
+│           ├── CMSFooter.tsx
+│           └── ImageDropZone.tsx
+│
+├── lib/
+│   ├── mongodb.ts                    # MongoDB connection (pooled)
+│   ├── auth.ts                       # JWT sign / verify utilities
+│   ├── api.ts                        # Axios API client
+│   ├── cms.ts                        # CMS fetch helpers
+│   └── response.ts                   # Standardized API response helpers
+│
+├── models/
+│   ├── Admin.ts                      # Mongoose Admin model
+│   └── index.ts                      # Model exports
+│
 ├── scripts/
-│   ├── deploy.sh
-│   └── vps-setup.sh
-└── frontend/
-    ├── PROJECT_STRUCTURE.md
-    ├── README.md
-    ├── eslint.config.mjs
-    ├── next-env.d.ts
-    ├── next.config.ts
-    ├── package.json
-    ├── postcss.config.mjs
-    ├── tsconfig.json
-    ├── .env.local
-    ├── .env.production
-    ├── app/
-    │   ├── favicon.ico
-    │   ├── globals.css
-    │   ├── layout.tsx
-    │   ├── page.tsx
-    │   ├── about/
-    │   │   └── page.tsx
-    │   ├── admin/
-    │   │   ├── page.tsx
-    │   │   ├── dashboard/
-    │   │   │   ├── page.tsx
-    │   │   │   ├── bookings/
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── cms/
-    │   │   │   │   ├── page.tsx
-    │   │   │   │   ├── about/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── contact/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── footer/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── home/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── navbar/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── services/
-    │   │   │   │   │   └── page.tsx
-    │   │   │   ├── leads/
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── subscribers/
-    │   │   │   │   └── page.tsx
-    │   │   ├── forgot-password/
-    │   │   │   └── page.tsx
-    │   │   ├── reset-password/
-    │   │   │   └── page.tsx
-    │   ├── contact/
-    │   │   └── page.tsx
-    │   ├── services/
-    │   │   └── page.tsx
-    │   └── api/
-    │       ├── health/
-    │       │   └── route.ts
-    │       ├── auth/
-    │       │   ├── login/
-    │       │   │   └── route.ts
-    │       │   ├── verify/
-    │       │   │   └── route.ts
-    │       │   ├── forgot-password/
-    │       │   │   └── route.ts
-    │       │   ├── validate-reset-token/
-    │       │   │   └── route.ts
-    │       │   └── reset-password/
-    │       │       └── route.ts
-    │       ├── leads/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       ├── route.ts
-    │       │       └── status/
-    │       │           └── route.ts
-    │       ├── bookings/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       ├── route.ts
-    │       │       └── status/
-    │       │           └── route.ts
-    │       ├── subscribers/
-    │       │   ├── route.ts
-    │       │   └── [id]/
-    │       │       └── route.ts
-    │       ├── cms/
-    │       │   ├── upload/
-    │       │   │   └── image/
-    │       │   │       └── route.ts
-    │       │   └── [pageSlug]/
-    │       │       └── route.ts
-    │       └── dashboard/
-    │           ├── stats/
-    │           │   └── route.ts
-    │           └── weekly-chart/
-    │               └── route.ts
-    ├── components/
-    │   ├── Footer.tsx
-    │   ├── LayoutWrapper.tsx
-    │   └── Navbar.tsx
-    ├── lib/
-    │   ├── api.ts
-    │   ├── cms.ts
-    │   └── backend/
-    │       ├── db.ts
-    │       ├── config/
-    │       │   └── env.ts
-    │       ├── middleware/
-    │       │   └── auth.ts
-    │       ├── utils/
-    │       │   ├── ApiError.ts
-    │       │   └── ApiResponse.ts
-    │       └── models/
-    │           ├── Admin.model.ts
-    │           ├── Booking.model.ts
-    │           ├── Lead.model.ts
-    │           ├── PageContent.model.ts
-    │           ├── PasswordReset.model.ts
-    │           └── Subscriber.model.ts
-    ├── public/
-    ├── scripts/
-    │   └── migrate-admins.ts
-    └── sections/
-        ├── about/
-        │   ├── AboutCTA.tsx
-        │   ├── AboutHero.tsx
-        │   ├── AboutMissionVision.tsx
-        │   ├── AboutStats.tsx
-        │   ├── AboutStory.tsx
-        │   ├── AboutTeam.tsx
-        │   └── AboutValues.tsx
-        ├── admin/
-        │   ├── AdminBookings.tsx
-        │   ├── AdminCMS.tsx
-        │   ├── AdminDashboard.tsx
-        │   ├── AdminHeader.tsx
-        │   ├── AdminLeads.tsx
-        │   ├── AdminLogin.tsx
-        │   ├── AdminSidebar.tsx
-        │   ├── AdminSubscribers.tsx
-        │   ├── ForgotPassword.tsx
-        │   ├── ResetPassword.tsx
-        │   └── cms/
-        │       ├── CMSAbout.tsx
-        │       ├── CMSContact.tsx
-        │       ├── CMSFooter.tsx
-        │       ├── CMSHome.tsx
-        │       ├── CMSNavbar.tsx
-        │       ├── CMSServices.tsx
-        │       └── ImageDropZone.tsx
-        ├── contact/
-        │   ├── ContactBooking.tsx
-        │   ├── ContactFAQ.tsx
-        │   ├── ContactForm.tsx
-        │   └── ContactHero.tsx
-        ├── home/
-        │   ├── Clients.tsx
-        │   ├── Hero.tsx
-        │   ├── Newsletter.tsx
-        │   ├── Process.tsx
-        │   ├── ServicesPreview.tsx
-        │   ├── Testimonials.tsx
-        │   └── WhoWeHelp.tsx
-        └── services/
-            ├── AdminSupport.tsx
-            ├── ComparisonSection.tsx
-            ├── CustomerSupport.tsx
-            ├── FinanceBookkeeping.tsx
-            ├── MarketingSocial.tsx
-            ├── ServiceWebDev.tsx
-            ├── ServicesCTA.tsx
-            └── ServicesHero.tsx
+│   ├── migrate-admins.ts             # Admin seed / migration script
+│   └── build-tree.js                 # Generates project_structure.txt
+│
+└── public/                           # Static assets
+```
+
 ---
 
 ## 🚀 Quick Start
@@ -269,34 +243,35 @@ Remotage(2)/
 - MongoDB (local or Atlas)
 - npm or yarn
 
-### 1. Clone the Repository
+### 1. Clone & Install
 
 ```bash
 git clone https://github.com/abdussamietahir2006-stack/Remotage.git
-cd Remotage
-```
-
-
-
-
-### 3. Frontend Setup
-
-```bash
-cd ../frontend
+cd Remotage/frontend
 npm install
 ```
 
-Create `.env.local` in the `frontend/` folder:
+### 2. Environment Variables
 
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_strong_random_secret_min_32_chars
-JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:3000
+Copy the example file and fill in your values:
+
+```bash
+cp .env.example .env.local
 ```
 
-Start the frontend:
+```env
+# MongoDB
+MONGODB_URI=your_mongodb_connection_string
+
+# JWT
+JWT_SECRET=your_strong_random_secret_min_32_chars
+JWT_EXPIRES_IN=7d
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
@@ -304,142 +279,170 @@ npm run dev
 
 Open `http://localhost:3000`
 
+### 4. Create Admin Account
+
+Run the migration script to seed your first admin user:
+
+```bash
+npx ts-node scripts/migrate-admins.ts
+```
+
 ---
 
 ## 🔐 Environment Variables
 
-### Backend (`backend/.env`)
-
 | Variable | Description |
 |---|---|
-| `PORT` | Express server port (default: 5000) |
-| `MONGODB_URI` | MongoDB connection string |
+| `MONGODB_URI` | MongoDB connection string (Atlas or local) |
 | `JWT_SECRET` | Secret key for signing JWTs (min 32 chars) |
 | `JWT_EXPIRES_IN` | JWT expiry duration (e.g. `7d`) |
-| `CLIENT_URL` | Frontend URL for CORS |
-
-### Frontend (`frontend/.env.local`)
-
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_API_URL` | Backend API base URL |
+| `NEXT_PUBLIC_APP_URL` | Public base URL of the app |
 
 ---
 
 ## 🌐 API Routes
 
+All routes live inside `app/api/` and run serverlessly via Next.js.
+
 ### Auth
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/auth/login` | ❌ | Admin login |
+| POST | `/api/auth/login` | ❌ | Admin login — returns JWT |
+| GET | `/api/auth/verify` | ✅ | Verify JWT token |
 | POST | `/api/auth/forgot-password` | ❌ | Send password reset email |
-| POST | `/api/auth/reset-password` | ❌ | Reset password with token |
-| GET | `/api/auth/me` | ✅ | Get current admin |
-
-### CMS
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| GET | `/api/cms/:section` | ❌ | Get page content |
-| PUT | `/api/cms/:section` | ✅ | Update page content |
+| POST | `/api/auth/validate-reset-token` | ❌ | Validate reset token |
+| POST | `/api/auth/reset-password` | ❌ | Reset password with valid token |
 
 ### Bookings
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/bookings` | ❌ | Submit a booking |
 | GET | `/api/bookings` | ✅ | List all bookings |
-| PUT | `/api/bookings/:id` | ✅ | Update booking status |
-| DELETE | `/api/bookings/:id` | ✅ | Delete booking |
+| POST | `/api/bookings` | ❌ | Submit a booking request |
+| GET/DELETE | `/api/bookings/[id]` | ✅ | Get or delete a booking |
+| PATCH | `/api/bookings/[id]/status` | ✅ | Update booking status |
 
 ### Leads
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/leads` | ❌ | Submit contact form |
 | GET | `/api/leads` | ✅ | List all leads |
-| DELETE | `/api/leads/:id` | ✅ | Delete lead |
+| POST | `/api/leads` | ❌ | Submit contact form |
+| GET/DELETE | `/api/leads/[id]` | ✅ | Get or delete a lead |
+| PATCH | `/api/leads/[id]/status` | ✅ | Update lead status |
 
 ### Subscribers
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| POST | `/api/subscribers` | ❌ | Subscribe to newsletter |
 | GET | `/api/subscribers` | ✅ | List all subscribers |
-| DELETE | `/api/subscribers/:id` | ✅ | Remove subscriber |
+| POST | `/api/subscribers` | ❌ | Subscribe to newsletter |
+| DELETE | `/api/subscribers/[id]` | ✅ | Remove a subscriber |
 
-### Dashboard & Analytics
+### CMS
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| GET | `/api/dashboard/stats` | ✅ | Get dashboard stats |
-| GET | `/api/analytics` | ✅ | Get analytics data |
+| GET | `/api/cms/[pageSlug]` | ❌ | Get content for a page section |
+| PUT | `/api/cms/[pageSlug]` | ✅ | Update content for a page section |
+| POST | `/api/cms/upload/image` | ✅ | Upload an image |
+
+### Dashboard
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/dashboard/stats` | ✅ | Overview stats (bookings, leads, subscribers) |
+| GET | `/api/dashboard/weekly-chart` | ✅ | Weekly activity chart data |
+
+### Health
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/api/health` | ❌ | Server health check |
 
 ---
 
-## 🌱 CMS Sections
+## 🌱 CMS Page Slugs
 
-| Section | Editable Content |
+| Slug | Editable Content |
 |---|---|
-| `home` | Hero, services preview, who we help, process, clients, testimonials, newsletter |
-| `about` | Story, mission, vision, values, stats, team |
-| `services` | Service titles, descriptions, icons, details |
-| `contact` | Contact info, FAQ, booking details |
+| `home` | Hero, services preview, process, client logos, testimonials, newsletter |
+| `about` | Story, stats, mission, vision, values, team |
+| `services` | Service titles, descriptions, bullet points, images |
+| `contact` | Contact info, FAQ items, booking copy |
 | `navbar` | Logo, navigation links, CTA button |
-| `footer` | Brand info, social links, footer links, contact info |
+| `footer` | Brand copy, social links, footer links, phone, email |
 
 ---
 
-## 🚢 Deployment
+## 🔒 Route Protection
 
-### VPS (Recommended — Nginx + PM2)
+`middleware.ts` intercepts all requests to `/admin/dashboard/*` and redirects unauthenticated users to `/admin`. JWT is validated server-side on every protected request.
 
-Run the setup script on a fresh VPS:
+---
 
-```bash
-chmod +x scripts/vps-setup.sh
-./scripts/vps-setup.sh
-```
+## 📊 About Remotage
 
-Deploy updates:
-
-```bash
-chmod +x scripts/deploy.sh
-./scripts/deploy.sh
-```
-
-PM2 manages both frontend and backend processes via `ecosystem.config.js`. Nginx routes traffic using `nginx/remotage.conf`.
-
-### Vercel (Frontend only)
-
-The frontend can be independently deployed to Vercel:
-
-```bash
-cd frontend
-vercel
-```
-
-Set `NEXT_PUBLIC_API_URL` in your Vercel environment variables to point to your backend.
+| Metric | Value |
+|---|---|
+| 🧑‍💼 Clients Served | 150+ |
+| 💰 Revenue Generated | $2M+ |
+| ⭐ Client Satisfaction | 98% |
+| 🕐 Support Availability | 24/7 |
+| ⚡ Onboarding Time | 24 hours |
+| 📍 Founded | 2023 |
 
 ---
 
 ## 🔧 Scripts
 
-### Backend
 ```bash
-npm run dev       # Start with ts-node-dev (hot reload)
-npm run build     # Compile TypeScript
-npm run start     # Start compiled production server
-```
+npm run dev          # Start Next.js development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 
-### Frontend
-```bash
-npm run dev       # Start Next.js dev server
-npm run build     # Build for production
-npm run start     # Start production server
-npm run lint      # Run ESLint
+# Utilities
+node scripts/build-tree.js          # Regenerate project_structure.txt
+npx ts-node scripts/migrate-admins.ts  # Seed / migrate admin accounts
 ```
 
 ---
 
-## 👨‍💻 Author
+## 🚢 Deployment
 
-**Abdus Samie Tahir** — Full-Stack Developer · Designer · AI Automation
+### Vercel (Recommended)
+
+```bash
+vercel
+```
+
+Set the following environment variables in your Vercel project dashboard:
+
+- `MONGODB_URI`
+- `JWT_SECRET`
+- `JWT_EXPIRES_IN`
+- `NEXT_PUBLIC_APP_URL`
+
+### Self-Hosted (VPS)
+
+```bash
+npm run build
+npm run start
+```
+
+Use a process manager like PM2 and an Nginx reverse proxy pointing to port `3000`.
+
+---
+
+## 📞 Contact
+
+| Channel | Details |
+|---------|---------|
+| 🌐 Website | [remotage.com](https://www.remotage.com) |
+| 📧 Email | Mashood.tahir@remotage.com |
+| 📞 Phone | +1 (628) 265-7358 |
+| 📍 Availability | Worldwide · Remote First · 24/7 |
+
+---
+
+## 👨‍💻 Built By
+
+**Abdus Samie Tahir** — Full-Stack Developer · RMAST Studio
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Raja%20Abdussamie-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/raja-muhammad-abdussamie-tahir-b70121413/)
 [![Instagram](https://img.shields.io/badge/Instagram-@rmaststudio-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/rmaststudio/)
@@ -450,4 +453,14 @@ npm run lint      # Run ESLint
 
 ## 📄 License
 
-Private project — © 2026 Remotage / RMAST Studio. All rights reserved.
+Private project — © 2026 Remotage. All rights reserved.
+
+---
+
+<div align="center">
+
+*"Your Remote Advantage."* 🌐
+
+[remotage.com](https://www.remotage.com)
+
+</div>
