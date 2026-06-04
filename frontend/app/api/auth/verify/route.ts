@@ -1,5 +1,5 @@
-import { authenticate } from '@/lib/backend/middleware/auth';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
+import { authenticate } from '@/lib/auth-middleware';
+import { ApiResponse } from '@/lib/ApiResponse';
 
 export async function GET(request: Request) {
   try {

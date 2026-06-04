@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
-import { env } from '@/lib/backend/config/env';
-import { authenticate } from '@/lib/backend/middleware/auth';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
-import { ApiError } from '@/lib/backend/utils/ApiError';
+import { env } from '@/lib/env-config';
+import { authenticate } from '@/lib/auth-middleware';
+import { ApiResponse } from '@/lib/ApiResponse';
+import { ApiError } from '@/lib/ApiError';
 
 cloudinary.config({
   cloud_name: env.CLOUDINARY_CLOUD_NAME,

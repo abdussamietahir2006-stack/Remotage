@@ -1,11 +1,11 @@
-import { dbConnect } from '@/lib/backend/db';
-import { Admin } from '@/lib/backend/models/Admin.model';
-import { PasswordReset } from '@/lib/backend/models/PasswordReset.model';
+import { dbConnect } from '@/lib/db';
+import { Admin } from '@/lib/models/Admin.model';
+import { PasswordReset } from '@/lib/models/PasswordReset.model';
 import { v4 as uuidv4 } from 'uuid';
 import nodemailer from 'nodemailer';
-import { env } from '@/lib/backend/config/env';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
-import { ApiError } from '@/lib/backend/utils/ApiError';
+import { env } from '@/lib/env-config';
+import { ApiResponse } from '@/lib/ApiResponse';
+import { ApiError } from '@/lib/ApiError';
 
 export async function POST(request: Request) {
   try {

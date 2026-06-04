@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { env } from '../config/env';
-import { ApiError } from '../utils/ApiError';
+import { env } from './env-config';
+import { ApiError } from './ApiError';
 
 export interface DecodedAdmin {
   email: string;

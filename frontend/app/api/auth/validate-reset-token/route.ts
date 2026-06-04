@@ -1,7 +1,7 @@
-import { dbConnect } from '@/lib/backend/db';
-import { PasswordReset } from '@/lib/backend/models/PasswordReset.model';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
-import { ApiError } from '@/lib/backend/utils/ApiError';
+import { dbConnect } from '@/lib/db';
+import { PasswordReset } from '@/lib/models/PasswordReset.model';
+import { ApiResponse } from '@/lib/ApiResponse';
+import { ApiError } from '@/lib/ApiError';
 
 export async function POST(request: Request) {
   try {

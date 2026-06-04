@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { env } from '@/lib/backend/config/env';
+import { env } from '@/lib/env-config';
 
 export async function GET() {
   return NextResponse.json({

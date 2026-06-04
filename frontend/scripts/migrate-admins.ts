@@ -4,8 +4,8 @@ loadEnvConfig(process.cwd());
 const migrateAdmins = async () => {
   try {
     const mongoose = (await import('mongoose')).default;
-    const { Admin } = await import('../lib/backend/models/Admin.model');
-    const { env } = await import('../lib/backend/config/env');
+    const { Admin } = await import('../lib/models/Admin.model');
+    const { env } = await import('../lib/env-config');
 
     await mongoose.connect(env.MONGODB_URI, { dbName: 'remotage' } as any);
     console.log('✅ Connected to MongoDB');

@@ -1,9 +1,9 @@
-import { dbConnect } from '@/lib/backend/db';
-import { Lead } from '@/lib/backend/models/Lead.model';
-import { Booking } from '@/lib/backend/models/Booking.model';
-import { Subscriber } from '@/lib/backend/models/Subscriber.model';
-import { authenticate } from '@/lib/backend/middleware/auth';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
+import { dbConnect } from '@/lib/db';
+import { Lead } from '@/lib/models/Lead.model';
+import { Booking } from '@/lib/models/Booking.model';
+import { Subscriber } from '@/lib/models/Subscriber.model';
+import { authenticate } from '@/lib/auth-middleware';
+import { ApiResponse } from '@/lib/ApiResponse';
 
 export async function GET(request: Request) {
   try {

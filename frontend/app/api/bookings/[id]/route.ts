@@ -1,8 +1,8 @@
-import { dbConnect } from '@/lib/backend/db';
-import { Booking } from '@/lib/backend/models/Booking.model';
-import { authenticate } from '@/lib/backend/middleware/auth';
-import { ApiResponse } from '@/lib/backend/utils/ApiResponse';
-import { ApiError } from '@/lib/backend/utils/ApiError';
+import { dbConnect } from '@/lib/db';
+import { Booking } from '@/lib/models/Booking.model';
+import { authenticate } from '@/lib/auth-middleware';
+import { ApiResponse } from '@/lib/ApiResponse';
+import { ApiError } from '@/lib/ApiError';
 
 export async function DELETE(
   request: Request,

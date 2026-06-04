@@ -1,5 +1,5 @@
-import { dbConnect } from '@/lib/backend/db';
-import { PageContent } from '@/lib/backend/models/PageContent.model';
+import { dbConnect } from '@/lib/db';
+import { PageContent } from '@/lib/models/PageContent.model';
 
 export async function getPageContent(pageSlug: string) {
   try {
