@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import AdminBookings from "@/sections/admin/AdminBookings";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import AdminBookings from "@/components/admin/AdminBookings";
 
 export default function BookingsPage() {
   return (

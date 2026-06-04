@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || '',
+  baseURL: typeof window !== 'undefined' ? window.location.origin : '',
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach token to every request
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('adminToken');
@@ -14,15 +13,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 globally
 api.interceptors.response.use(
-  (response) => response,
+  (res) => res,
   (error) => {
-    if (error.response?.status === 401) {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('adminToken');
-        window.location.href = '/admin';
-      }
+    if (error.response?.status === 401 && typeof window !== 'undefined') {
+      localStorage.removeItem('adminToken');
+      window.location.href = '/admin';
     }
     return Promise.reject(error);
   }

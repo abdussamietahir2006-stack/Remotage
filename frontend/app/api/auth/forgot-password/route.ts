@@ -1,11 +1,10 @@
-import { dbConnect } from '@/lib/db';
-import { Admin } from '@/lib/models/Admin.model';
-import { PasswordReset } from '@/lib/models/PasswordReset.model';
+import { dbConnect } from '@/lib/mongodb';
+import { Admin } from '@/models/Admin';
+import { PasswordReset } from '@/models/index';
 import { v4 as uuidv4 } from 'uuid';
 import nodemailer from 'nodemailer';
-import { env } from '@/lib/env-config';
-import { ApiResponse } from '@/lib/ApiResponse';
-import { ApiError } from '@/lib/ApiError';
+import { ApiResponse } from '@/lib/response';
+import { ApiError } from '@/lib/response';
 
 export async function POST(request: Request) {
   try {
@@ -43,21 +42,22 @@ export async function POST(request: Request) {
       expiresAt,
     });
 
-    const resetLink = `${env.FRONTEND_URL}/admin/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
+    const url = new URL(request.url);
+    const resetLink = `${url.origin}/admin/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
     try {
       const transporter = nodemailer.createTransport({
-        host: env.SMTP_HOST,
-        port: env.SMTP_PORT,
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT || 587),
         secure: false,
         auth: {
-          user: env.SMTP_USER,
-          pass: env.SMTP_PASSWORD,
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
         },
       });
 
       const mailOptions = {
-        from: env.SMTP_FROM,
+        from: process.env.SMTP_FROM,
         to: email,
         subject: 'Reset Your Remotage Admin Password',
         html: `

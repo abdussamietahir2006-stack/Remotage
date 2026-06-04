@@ -4,10 +4,11 @@ loadEnvConfig(process.cwd());
 const migrateAdmins = async () => {
   try {
     const mongoose = (await import('mongoose')).default;
-    const { Admin } = await import('../lib/models/Admin.model');
-    const { env } = await import('../lib/env-config');
+    const { Admin } = await import('../models/Admin');
+    const uri = process.env.MONGODB_URI;
+    if (!uri) throw new Error('MONGODB_URI not found in environment');
 
-    await mongoose.connect(env.MONGODB_URI, { dbName: 'remotage' } as any);
+    await mongoose.connect(uri, { dbName: 'remotage' } as any);
     console.log('✅ Connected to MongoDB');
 
     // Delete existing admins (optional)

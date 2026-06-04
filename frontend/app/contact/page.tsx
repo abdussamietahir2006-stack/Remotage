@@ -1,8 +1,8 @@
 import { getPageContent } from '@/lib/cms';
-import ContactHero from "@/sections/contact/ContactHero";
-import ContactForm from "@/sections/contact/ContactForm";
-import ContactBooking from "@/sections/contact/ContactBooking";
-import ContactFAQ from "@/sections/contact/ContactFAQ";
+import ContactHero from "@/components/contact/ContactHero";
+import ContactForm from "@/components/contact/ContactForm";
+import ContactBooking from "@/components/contact/ContactBooking";
+import ContactFAQ from "@/components/contact/ContactFAQ";
 
 export const metadata = {
   title: "Contact | Remotage",

@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import CMSContact from "@/sections/admin/cms/CMSContact";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import CMSContact from "@/components/admin/cms/CMSContact";
 
 export default function CMSContactPage() {
   return (

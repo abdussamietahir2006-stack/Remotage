@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import CMSHome from "@/sections/admin/cms/CMSHome";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import CMSHome from "@/components/admin/cms/CMSHome";
 
 export default function CMSHomePage() {
   return (

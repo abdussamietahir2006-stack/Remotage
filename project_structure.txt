@@ -105,22 +105,18 @@ Remotage(2)/
     ├── lib/
     │   ├── api.ts
     │   ├── cms.ts
-    │   └── backend/
-    │       ├── db.ts
-    │       ├── config/
-    │       │   └── env.ts
-    │       ├── middleware/
-    │       │   └── auth.ts
-    │       ├── utils/
-    │       │   ├── ApiError.ts
-    │       │   └── ApiResponse.ts
-    │       └── models/
-    │           ├── Admin.model.ts
-    │           ├── Booking.model.ts
-    │           ├── Lead.model.ts
-    │           ├── PageContent.model.ts
-    │           ├── PasswordReset.model.ts
-    │           └── Subscriber.model.ts
+    │   ├── db.ts
+    │   ├── env-config.ts
+    │   ├── auth-middleware.ts
+    │   ├── ApiError.ts
+    │   ├── ApiResponse.ts
+    │   └── models/
+    │       ├── Admin.model.ts
+    │       ├── Booking.model.ts
+    │       ├── Lead.model.ts
+    │       ├── PageContent.model.ts
+    │       ├── PasswordReset.model.ts
+    │       └── Subscriber.model.ts
     ├── public/
     ├── scripts/
     │   └── migrate-admins.ts

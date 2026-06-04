@@ -1,11 +1,11 @@
 import { getPageContent } from '@/lib/cms';
-import Hero from "@/sections/home/Hero";
-import ServicesPreview from "@/sections/home/ServicesPreview";
-import WhoWeHelp from "@/sections/home/WhoWeHelp";
-import Process from "@/sections/home/Process";
-import Clients from "@/sections/home/Clients";
-import Testimonials from "@/sections/home/Testimonials";
-import Newsletter from "@/sections/home/Newsletter";
+import Hero from "@/components/home/Hero";
+import ServicesPreview from "@/components/home/ServicesPreview";
+import WhoWeHelp from "@/components/home/WhoWeHelp";
+import Process from "@/components/home/Process";
+import Clients from "@/components/home/Clients";
+import Testimonials from "@/components/home/Testimonials";
+import Newsletter from "@/components/home/Newsletter";
 
 export default async function Home() {
   const cms = await getPageContent('home');

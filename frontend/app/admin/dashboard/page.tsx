@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import AdminDashboard from "@/sections/admin/AdminDashboard";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import AdminDashboard from "@/components/admin/AdminDashboard";
 
 export default function DashboardPage() {
   return (

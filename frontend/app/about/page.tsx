@@ -1,10 +1,10 @@
 import { getPageContent } from '@/lib/cms';
-import AboutHero from "@/sections/about/AboutHero";
-import AboutStory from "@/sections/about/AboutStory";
-import AboutMissionVision from "@/sections/about/AboutMissionVision";
-import AboutStats from "@/sections/about/AboutStats";
-import AboutValues from "@/sections/about/AboutValues";
-import AboutCTA from "@/sections/about/AboutCTA";
+import AboutHero from "@/components/about/AboutHero";
+import AboutStory from "@/components/about/AboutStory";
+import AboutMissionVision from "@/components/about/AboutMissionVision";
+import AboutStats from "@/components/about/AboutStats";
+import AboutValues from "@/components/about/AboutValues";
+import AboutCTA from "@/components/about/AboutCTA";
 
 export const metadata = {
   title: "About | Remotage",

@@ -1,7 +1,7 @@
-import { dbConnect } from '@/lib/db';
-import { PasswordReset } from '@/lib/models/PasswordReset.model';
-import { ApiResponse } from '@/lib/ApiResponse';
-import { ApiError } from '@/lib/ApiError';
+import { dbConnect } from '@/lib/mongodb';
+import { PasswordReset } from '@/models/index';
+import { ApiResponse } from '@/lib/response';
+import { ApiError } from '@/lib/response';
 
 export async function POST(request: Request) {
   try {

@@ -1,9 +1,8 @@
-import { dbConnect } from '@/lib/db';
-import { Admin } from '@/lib/models/Admin.model';
+import { dbConnect } from '@/lib/mongodb';
+import { Admin } from '@/models/Admin';
 import jwt from 'jsonwebtoken';
-import { env } from '@/lib/env-config';
-import { ApiResponse } from '@/lib/ApiResponse';
-import { ApiError } from '@/lib/ApiError';
+import { ApiResponse } from '@/lib/response';
+import { ApiError } from '@/lib/response';
 
 export async function POST(request: Request) {
   try {
@@ -37,8 +36,8 @@ export async function POST(request: Request) {
 
     const token = jwt.sign(
       { email: admin.email, role: admin.role },
-      env.JWT_SECRET,
-      { expiresIn: env.JWT_EXPIRES_IN } as jwt.SignOptions
+      (process.env.JWT_SECRET || 'remotage_jwt_secret_key_2024'),
+      { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') } as jwt.SignOptions
     );
 
     return ApiResponse({

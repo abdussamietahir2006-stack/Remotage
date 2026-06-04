@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import AdminSubscribers from "@/sections/admin/AdminSubscribers";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import AdminSubscribers from "@/components/admin/AdminSubscribers";
 
 export default function SubscribersPage() {
   return (

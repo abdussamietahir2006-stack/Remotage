@@ -1,3 +1,6 @@
+# Remotage - Project Structure
+
+```
 Remotage(2)/
 ├── PROJECT_STRUCTURE.md
 ├── README.md
@@ -105,22 +108,18 @@ Remotage(2)/
     ├── lib/
     │   ├── api.ts
     │   ├── cms.ts
-    │   └── backend/
-    │       ├── db.ts
-    │       ├── config/
-    │       │   └── env.ts
-    │       ├── middleware/
-    │       │   └── auth.ts
-    │       ├── utils/
-    │       │   ├── ApiError.ts
-    │       │   └── ApiResponse.ts
-    │       └── models/
-    │           ├── Admin.model.ts
-    │           ├── Booking.model.ts
-    │           ├── Lead.model.ts
-    │           ├── PageContent.model.ts
-    │           ├── PasswordReset.model.ts
-    │           └── Subscriber.model.ts
+    │   ├── db.ts
+    │   ├── env-config.ts
+    │   ├── auth-middleware.ts
+    │   ├── ApiError.ts
+    │   ├── ApiResponse.ts
+    │   └── models/
+    │       ├── Admin.model.ts
+    │       ├── Booking.model.ts
+    │       ├── Lead.model.ts
+    │       ├── PageContent.model.ts
+    │       ├── PasswordReset.model.ts
+    │       └── Subscriber.model.ts
     ├── public/
     ├── scripts/
     │   └── migrate-admins.ts
@@ -174,3 +173,14 @@ Remotage(2)/
             ├── ServiceWebDev.tsx
             ├── ServicesCTA.tsx
             └── ServicesHero.tsx
+```
+
+## Project Overview
+
+**Remotage** is a unified Next.js professional startup services website with integrated API routes, database models, and administration control panel.
+
+### Core Features
+- Unified Next.js application hosting both SSR/CSR components and API backend routes
+- Mongoose database integration with active connection pooling
+- Admin Dashboard for CMS, leads tracking, bookings management, and subscribers control
+- Tailwind CSS styling and Framer Motion micro-animations

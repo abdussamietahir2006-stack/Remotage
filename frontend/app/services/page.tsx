@@ -1,12 +1,12 @@
 import { getPageContent } from '@/lib/cms';
-import ServicesHero from "@/sections/services/ServicesHero";
-import AdminSupport from "@/sections/services/AdminSupport";
-import CustomerSupport from "@/sections/services/CustomerSupport";
-import MarketingSocial from "@/sections/services/MarketingSocial";
-import FinanceBookkeeping from "@/sections/services/FinanceBookkeeping";
-import ServiceWebDev from "@/sections/services/ServiceWebDev";
-import ComparisonSection from "@/sections/services/ComparisonSection";
-import ServicesCTA from "@/sections/services/ServicesCTA";
+import ServicesHero from "@/components/services/ServicesHero";
+import AdminSupport from "@/components/services/AdminSupport";
+import CustomerSupport from "@/components/services/CustomerSupport";
+import MarketingSocial from "@/components/services/MarketingSocial";
+import FinanceBookkeeping from "@/components/services/FinanceBookkeeping";
+import ServiceWebDev from "@/components/services/ServiceWebDev";
+import ComparisonSection from "@/components/services/ComparisonSection";
+import ServicesCTA from "@/components/services/ServicesCTA";
 
 export const metadata = {
   title: "Services | Remotage",

@@ -1,8 +1,8 @@
-import { dbConnect } from '@/lib/db';
-import { Subscriber } from '@/lib/models/Subscriber.model';
-import { authenticate } from '@/lib/auth-middleware';
-import { ApiResponse } from '@/lib/ApiResponse';
-import { ApiError } from '@/lib/ApiError';
+import { dbConnect } from '@/lib/mongodb';
+import { Subscriber } from '@/models/index';
+import { authenticate } from '@/lib/auth';
+import { ApiResponse } from '@/lib/response';
+import { ApiError } from '@/lib/response';
 
 export async function POST(request: Request) {
   try {

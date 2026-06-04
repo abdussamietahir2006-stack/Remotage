@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import AdminLeads from "@/sections/admin/AdminLeads";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import AdminLeads from "@/components/admin/AdminLeads";
 
 export default function LeadsPage() {
   return (

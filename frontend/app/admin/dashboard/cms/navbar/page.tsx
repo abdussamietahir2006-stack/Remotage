@@ -1,8 +1,8 @@
 "use client";
 
-import AdminSidebar from "@/sections/admin/AdminSidebar";
-import AdminHeader from "@/sections/admin/AdminHeader";
-import CMSNavbar from "@/sections/admin/cms/CMSNavbar";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminHeader from "@/components/admin/AdminHeader";
+import CMSNavbar from "@/components/admin/cms/CMSNavbar";
 
 export default function CMSNavbarPage() {
   return (
