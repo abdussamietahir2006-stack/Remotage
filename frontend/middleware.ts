@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth';
+import { verifyTokenEdge } from '@/lib/auth.edge';
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   res.headers.set('x-pathname', req.nextUrl.pathname);
 
-  // if you have protected /admin routes:
   if (req.nextUrl.pathname.startsWith('/admin/dashboard')) {
     const token = req.cookies.get('token')?.value;
-    if (!token || !(await verifyToken(token))) {
+    if (!token || !(await verifyTokenEdge(token))) {
       return NextResponse.redirect(new URL('/admin', req.url));
     }
   }
