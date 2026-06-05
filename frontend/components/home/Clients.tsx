@@ -31,7 +31,7 @@ export default function Clients({ images = {} }: Props) {
               Trusted by Premium Brands
             </span>
           </motion.h2>
-          <p className="text-gray-500 text-sm">Client logos will appear here once added from the admin panel.</p>
+          <p className="text-gray-500 text-sm"></p>
         </div>
       </section>
     );

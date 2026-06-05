@@ -9,7 +9,7 @@ export const metadata = {
   description:
     "Book a free discovery call with Remotage. No commitment required — let us show you how we can scale your business operations remotely.",
   alternates: { canonical: "/contact" },
-}
+};
 
 export default async function ContactPage() {
   const cms = await getPageContent('contact');

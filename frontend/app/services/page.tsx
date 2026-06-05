@@ -1,3 +1,4 @@
+
 import { getPageContent } from '@/lib/cms';
 import ServicesHero from "@/components/services/ServicesHero";
 import AdminSupport from "@/components/services/AdminSupport";
@@ -9,8 +10,10 @@ import ComparisonSection from "@/components/services/ComparisonSection";
 import ServicesCTA from "@/components/services/ServicesCTA";
 
 export const metadata = {
-  title: "Services | Remotage",
-  description: "Premium remote services to scale your business.",
+  title: "Services",
+  description:
+    "Virtual assistant, lead generation, customer support, bookkeeping, marketing, web development, CRM, and real estate services — all remote, all expert-led.",
+  alternates: { canonical: "/services" },
 };
 
 export default async function ServicesPage() {
