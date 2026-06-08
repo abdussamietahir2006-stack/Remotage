@@ -16,7 +16,8 @@ export default function Clients({ images = {} }: Props) {
   }));
 
   const filled = logos.filter(l => l.url);
-  const display = filled.length > 0 ? [...filled, ...filled] : [];
+  const shouldScroll = filled.length >= 4;
+  const display = shouldScroll ? [...filled, ...filled] : filled;
 
   if (display.length === 0) {
     return (
@@ -51,21 +52,34 @@ export default function Clients({ images = {} }: Props) {
           </span>
         </motion.h2>
         <p className="text-gray-400 mb-12">We collaborate with ambitious brands worldwide.</p>
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-10 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            {display.map((client, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center w-28 h-28 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-md shadow-lg"
-              >
-                <img src={client.url!} alt={client.label} className="w-20 h-16 object-contain opacity-80 hover:opacity-100 transition" />
-              </div>
-            ))}
-          </motion.div>
+        <div className="relative w-full overflow-hidden flex justify-center">
+          {shouldScroll ? (
+            <motion.div
+              className="flex gap-10 w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              {display.map((client, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center w-28 h-28 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-md shadow-lg flex-shrink-0"
+                >
+                  <img src={client.url!} alt={client.label} className="w-20 h-16 object-contain opacity-80 hover:opacity-100 transition" />
+                </div>
+              ))}
+            </motion.div>
+          ) : (
+            <div className="flex gap-10 justify-center flex-wrap">
+              {display.map((client, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center w-28 h-28 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-md shadow-lg"
+                >
+                  <img src={client.url!} alt={client.label} className="w-20 h-16 object-contain opacity-80 hover:opacity-100 transition" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
