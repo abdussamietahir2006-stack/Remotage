@@ -74,7 +74,11 @@ export default function CMSAbout() {
     setForm(prev => ({ ...prev, [name]: value }));
   }, []);
 
-  const handleImageChange = useCallback((key: string) => async (_previewUrl: string, file: File) => {
+  const handleImageChange = useCallback((key: string) => async (previewUrl: string | null, file: File | null) => {
+    if (!file) {
+      setImages(prev => ({ ...prev, [key]: "" }));
+      return;
+    }
     setUploadingKey(key);
     try {
       const fd = new FormData();

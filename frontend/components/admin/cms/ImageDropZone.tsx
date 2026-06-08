@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ImageDropZoneProps {
   label: string;
   currentImage?: string;
-  onImageChange: (previewUrl: string, file: File) => void;
+  onImageChange: (previewUrl: string | null, file: File | null) => void;
   aspectRatio?: "square" | "landscape" | "portrait" | "logo";
 }
 
@@ -20,6 +20,10 @@ export default function ImageDropZone({
   const [preview, setPreview] = useState<string | null>(currentImage || null);
   const [fileName, setFileName] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setPreview(currentImage || null);
+  }, [currentImage]);
 
   const heightClass = {
     square: "h-40",
@@ -65,6 +69,7 @@ export default function ImageDropZone({
     setPreview(null);
     setFileName("");
     if (inputRef.current) inputRef.current.value = "";
+    onImageChange(null, null);
   };
 
   return (

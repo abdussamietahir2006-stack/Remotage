@@ -28,7 +28,7 @@ interface ServiceBlockProps {
   imageUrl: string;
   uploadingKey: string | null;
   onChange: (name: string, value: string) => void;
-  onImageChange: (key: string) => (_preview: string, file: File) => Promise<void>;
+  onImageChange: (key: string) => (previewUrl: string | null, file: File | null) => Promise<void>;
 }
 
 function ServiceBlock({ num, fields, imageKey, imageUrl, uploadingKey, onChange, onImageChange }: ServiceBlockProps) {
@@ -107,7 +107,11 @@ export default function CMSServices() {
     setForm(prev => ({ ...prev, [name]: value }));
   }, []);
 
-  const handleImageChange = useCallback((key: string) => async (_previewUrl: string, file: File) => {
+  const handleImageChange = useCallback((key: string) => async (previewUrl: string | null, file: File | null) => {
+    if (!file) {
+      setImages(prev => ({ ...prev, [key]: "" }));
+      return;
+    }
     setUploadingKey(key);
     try {
       const fd = new FormData();

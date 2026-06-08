@@ -3,6 +3,7 @@ import { PageContent } from '@/models/index';
 import { authenticate } from '@/lib/auth';
 import { ApiResponse } from '@/lib/response';
 import { ApiError } from '@/lib/response';
+import { revalidatePath } from 'next/cache';
 
 export async function GET(
   request: Request,
@@ -59,6 +60,24 @@ export async function PUT(
       { new: true, upsert: true }
     ).lean();
 
+    // Trigger on-demand revalidation to refresh Next.js static pages instantly
+    try {
+      const pathMap: Record<string, string> = {
+        home: '/',
+        about: '/about',
+        services: '/services',
+        contact: '/contact',
+      };
+
+      if (pathMap[pageSlug]) {
+        revalidatePath(pathMap[pageSlug]);
+      } else if (pageSlug === 'navbar' || pageSlug === 'footer') {
+        revalidatePath('/', 'layout');
+      }
+    } catch (revalError) {
+      console.error(`Revalidation failed for page slug ${pageSlug}:`, revalError);
+    }
+
     return ApiResponse({
       statusCode: 200,
       message: 'Page content saved successfully.',
@@ -71,3 +90,4 @@ export async function PUT(
     });
   }
 }
+
