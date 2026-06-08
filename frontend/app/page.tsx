@@ -25,8 +25,8 @@ export default async function Home() {
       <ServicesPreview content={content} />
       <WhoWeHelp images={images} />
       <Process />
-      <Clients images={images} />
-      <Testimonials />
+      <Clients content={content} images={images} />
+      <Testimonials content={content} images={images} />
       <Newsletter content={content} />
     </main>
   );

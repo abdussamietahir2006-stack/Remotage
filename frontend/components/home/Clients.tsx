@@ -4,22 +4,22 @@ import { motion } from "framer-motion";
 
 interface Props {
   images?: Record<string, string>;
+  content?: Record<string, string>;
 }
 
 const placeholders = [1, 2, 3, 4, 5, 6];
 
-export default function Clients({ images = {} }: Props) {
+export default function Clients({ images = {}, content = {} }: Props) {
   const logos = placeholders.map(n => ({
     key: `clientLogo${n}`,
     url: images[`clientLogo${n}`] || null,
     label: `Client ${n}`,
+    link: content[`clientLink${n}`] || null,
   }));
 
   const filled = logos.filter(l => l.url);
-  const shouldScroll = filled.length >= 4;
-  const display = shouldScroll ? [...filled, ...filled] : filled;
 
-  if (display.length === 0) {
+  if (filled.length === 0) {
     return (
       <section className="py-24 bg-[#0A0A0A] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -38,6 +38,17 @@ export default function Clients({ images = {} }: Props) {
     );
   }
 
+  // To build a seamless infinite horizontal carousel, we want at least 8 items
+  const minItems = 8;
+  const repeatCount = Math.ceil(minItems / filled.length);
+  const repeatedList: typeof filled = [];
+  for (let i = 0; i < repeatCount; i++) {
+    repeatedList.push(...filled);
+  }
+
+  // Duplicate repeatedList to support seamless -50% translation wrapping
+  const display = [...repeatedList, ...repeatedList];
+
   return (
     <section className="py-24 bg-[#0A0A0A] overflow-hidden relative">
       <div className="absolute w-[400px] h-[400px] bg-[#D4AF37]/10 blur-[120px] rounded-full top-0 left-0" />
@@ -53,33 +64,47 @@ export default function Clients({ images = {} }: Props) {
         </motion.h2>
         <p className="text-gray-400 mb-12">We collaborate with ambitious brands worldwide.</p>
         <div className="relative w-full overflow-hidden flex justify-center">
-          {shouldScroll ? (
-            <motion.div
-              className="flex gap-10 w-max"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              {display.map((client, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center w-28 h-28 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-md shadow-lg flex-shrink-0"
+          <motion.div
+            className="flex gap-10 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          >
+            {display.map((client, i) => {
+              const card = (
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.08, 
+                    borderColor: "rgba(212, 175, 55, 0.6)", 
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    boxShadow: "0 10px 25px -5px rgba(212, 175, 55, 0.15)"
+                  }}
+                  className="flex items-center justify-center w-52 h-24 rounded-2xl border border-[#D4AF37]/20 bg-[#111111]/90 backdrop-blur-md shadow-lg flex-shrink-0 cursor-pointer transition-all duration-300"
                 >
-                  <img src={client.url!} alt={client.label} className="w-20 h-16 object-contain opacity-80 hover:opacity-100 transition" />
-                </div>
-              ))}
-            </motion.div>
-          ) : (
-            <div className="flex gap-10 justify-center flex-wrap">
-              {display.map((client, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center w-28 h-28 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-md shadow-lg"
-                >
-                  <img src={client.url!} alt={client.label} className="w-20 h-16 object-contain opacity-80 hover:opacity-100 transition" />
-                </div>
-              ))}
-            </div>
-          )}
+                  <img 
+                    src={client.url!} 
+                    alt={client.label} 
+                    className="w-44 h-16 object-contain opacity-90 hover:opacity-100 transition duration-300" 
+                  />
+                </motion.div>
+              );
+
+              if (client.link) {
+                return (
+                  <a 
+                    key={i} 
+                    href={client.link.startsWith('http') ? client.link : `https://${client.link}`}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block flex-shrink-0"
+                  >
+                    {card}
+                  </a>
+                );
+              }
+
+              return <div key={i} className="flex-shrink-0">{card}</div>;
+            })}
+          </motion.div>
         </div>
       </div>
     </section>

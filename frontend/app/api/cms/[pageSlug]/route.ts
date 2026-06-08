@@ -5,6 +5,8 @@ import { ApiResponse } from '@/lib/response';
 import { ApiError } from '@/lib/response';
 import { revalidatePath } from 'next/cache';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ pageSlug: string }> | { pageSlug: string } }
@@ -15,10 +17,12 @@ export async function GET(
     const { pageSlug } = resolvedParams;
 
     const page = await PageContent.findOne({ pageSlug }).lean();
+    const serializedPage = page ? JSON.parse(JSON.stringify(page)) : null;
+
     return ApiResponse({
       statusCode: 200,
       message: 'Page content fetched.',
-      data: page ?? { pageSlug, content: {}, images: {}, sections: [] },
+      data: serializedPage ?? { pageSlug, content: {}, images: {}, sections: [] },
     });
   } catch (error: any) {
     return ApiResponse({
@@ -60,6 +64,8 @@ export async function PUT(
       { new: true, upsert: true }
     ).lean();
 
+    const serializedPage = page ? JSON.parse(JSON.stringify(page)) : null;
+
     // Trigger on-demand revalidation to refresh Next.js static pages instantly
     try {
       const pathMap: Record<string, string> = {
@@ -81,7 +87,7 @@ export async function PUT(
     return ApiResponse({
       statusCode: 200,
       message: 'Page content saved successfully.',
-      data: page,
+      data: serializedPage,
     });
   } catch (error: any) {
     return ApiResponse({

@@ -52,6 +52,11 @@ const defaultForm = {
   service8: "Online Reputation Management",
   newsletterHeading: "Subscribe to Get Special News",
   newsletterSubtext: "Stay updated with our latest services and offers.",
+  clientLink1: "", clientLink2: "", clientLink3: "",
+  clientLink4: "", clientLink5: "", clientLink6: "",
+  testimonialName1: "John Carter",    testimonialRole1: "Startup Founder",    testimonialText1: "Remotage completely transformed our workflow. We scaled faster without hiring a full in-house team.",
+  testimonialName2: "Sarah Williams", testimonialRole2: "Marketing Director", testimonialText2: "The automation and execution quality is next level. It feels like having an elite remote team.",
+  testimonialName3: "Ali Khan",       testimonialRole3: "Business Owner",      testimonialText3: "From lead generation to operations, everything became smoother. Highly recommended.",
 };
 
 const defaultImages = {
@@ -192,51 +197,76 @@ export default function CMSHome() {
 
       <div className="rounded-2xl border border-white/[0.06] bg-[#111] p-6 space-y-5">
         <h2 className="text-white font-semibold flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Client Logos
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Client Logos & Links
         </h2>
-        <p className="text-gray-500 text-xs">Recommended size 200x80px, PNG with transparent background</p>
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="space-y-6">
           {([1, 2, 3, 4, 5, 6] as const).map(n => {
-            const key = `clientLogo${n}` as keyof typeof images;
+            const imgKey = `clientLogo${n}` as keyof typeof images;
+            const linkKey = `clientLink${n}` as keyof typeof form;
             return (
-              <div key={key} className="relative">
-                <ImageDropZone
-                  label={`Client Logo ${n}`}
-                  currentImage={images[key]}
-                  onImageChange={handleImageChange(key)}
-                  aspectRatio="logo"
-                />
-                {uploadingKey === key && (
-                  <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
-                    <p className="text-[#D4AF37] text-xs font-semibold">Uploading...</p>
-                  </div>
-                )}
+              <div key={n} className="grid sm:grid-cols-3 gap-5 items-start border-b border-white/[0.04] pb-5 last:border-b-0 last:pb-0">
+                <div className="relative col-span-1">
+                  <ImageDropZone
+                    label={`Client Logo ${n}`}
+                    currentImage={images[imgKey]}
+                    onImageChange={handleImageChange(imgKey)}
+                    aspectRatio="logo"
+                  />
+                  {uploadingKey === imgKey && (
+                    <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
+                      <p className="text-[#D4AF37] text-xs font-semibold">Uploading...</p>
+                    </div>
+                  )}
+                </div>
+                <div className="col-span-2">
+                  <Field 
+                    label={`Client Logo ${n} Website URL`} 
+                    name={linkKey} 
+                    value={(form[linkKey] as string) || ""} 
+                    onChange={handleFormChange} 
+                  />
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/[0.06] bg-[#111] p-6 space-y-5">
+      <div className="rounded-2xl border border-white/[0.06] bg-[#111] p-6 space-y-6">
         <h2 className="text-white font-semibold flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Testimonial Avatars
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Testimonials
         </h2>
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="space-y-6">
           {([1, 2, 3] as const).map(n => {
-            const key = `testimonialAvatar${n}` as keyof typeof images;
+            const avatarKey = `testimonialAvatar${n}` as keyof typeof images;
+            const nameKey = `testimonialName${n}` as keyof typeof form;
+            const roleKey = `testimonialRole${n}` as keyof typeof form;
+            const textKey = `testimonialText${n}` as keyof typeof form;
             return (
-              <div key={key} className="relative">
-                <ImageDropZone
-                  label={`Testimonial ${n} Avatar`}
-                  currentImage={images[key]}
-                  onImageChange={handleImageChange(key)}
-                  aspectRatio="square"
-                />
-                {uploadingKey === key && (
-                  <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
-                    <p className="text-[#D4AF37] text-xs font-semibold">Uploading...</p>
+              <div key={n} className="space-y-4 border-b border-white/[0.04] pb-6 last:border-b-0 last:pb-0">
+                <p className="text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">Testimonial {n}</p>
+                <div className="grid sm:grid-cols-3 gap-5 items-start">
+                  <div className="relative col-span-1">
+                    <ImageDropZone
+                      label={`Avatar`}
+                      currentImage={images[avatarKey]}
+                      onImageChange={handleImageChange(avatarKey)}
+                      aspectRatio="square"
+                    />
+                    {uploadingKey === avatarKey && (
+                      <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
+                        <p className="text-[#D4AF37] text-xs font-semibold">Uploading...</p>
+                      </div>
+                    )}
                   </div>
-                )}
+                  <div className="col-span-2 space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <Field label="Client Name" name={nameKey} value={(form[nameKey] as string) || ""} onChange={handleFormChange} />
+                      <Field label="Client Role" name={roleKey} value={(form[roleKey] as string) || ""} onChange={handleFormChange} />
+                    </div>
+                    <Field label="Testimonial Text" name={textKey} value={(form[textKey] as string) || ""} onChange={handleFormChange} multiline />
+                  </div>
+                </div>
               </div>
             );
           })}
