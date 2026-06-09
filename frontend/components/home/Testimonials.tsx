@@ -17,17 +17,10 @@ export default function Testimonials({ content = {}, images = {} }: Props) {
     
     const defaultName = ["John Carter", "Sarah Williams", "Ali Khan"][n - 1];
     const defaultRole = ["Startup Founder", "Marketing Director", "Business Owner"][n - 1];
-    const defaultAvatar = [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200"
-    ][n - 1];
-
     return {
       name: content[`testimonialName${n}`] || defaultName,
       role: content[`testimonialRole${n}`] || defaultRole,
       text: content[`testimonialText${n}`] || defaultText,
-      avatar: images[`testimonialAvatar${n}`] || defaultAvatar,
     };
   });
 
@@ -89,20 +82,13 @@ export default function Testimonials({ content = {}, images = {} }: Props) {
               </div>
 
               {/* Client Profile */}
-              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05]">
-                <img 
-                  src={item.avatar} 
-                  alt={item.name} 
-                  className="w-12 h-12 rounded-full object-cover border border-[#D4AF37]/30 shadow-md group-hover:border-[#D4AF37]/65 transition duration-300"
-                />
-                <div>
-                  <h4 className="text-white font-bold text-sm group-hover:text-[#D4AF37] transition duration-300">
-                    {item.name}
-                  </h4>
-                  <p className="text-gray-400 text-xs mt-0.5">
-                    {item.role}
-                  </p>
-                </div>
+              <div className="mt-8 pt-6 border-t border-white/[0.05]">
+                <h4 className="text-white font-bold text-sm group-hover:text-[#D4AF37] transition duration-300">
+                  {item.name}
+                </h4>
+                <p className="text-gray-400 text-xs mt-0.5">
+                  {item.role}
+                </p>
               </div>
             </motion.div>
           ))}

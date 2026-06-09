@@ -7,7 +7,7 @@ interface Props {
   content?: Record<string, string>;
 }
 
-const placeholders = [1, 2, 3, 4, 5, 6];
+const placeholders = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default function Clients({ images = {}, content = {} }: Props) {
   const logos = placeholders.map(n => ({
@@ -83,7 +83,7 @@ export default function Clients({ images = {}, content = {} }: Props) {
                   <img 
                     src={client.url!} 
                     alt={client.label} 
-                    className="w-44 h-16 object-contain opacity-90 hover:opacity-100 transition duration-300" 
+                    className="w-44 h-16 object-contain opacity-90 hover:opacity-100 transition duration-300 mix-blend-screen" 
                   />
                 </motion.div>
               );

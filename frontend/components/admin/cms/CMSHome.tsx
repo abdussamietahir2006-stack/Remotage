@@ -54,6 +54,7 @@ const defaultForm = {
   newsletterSubtext: "Stay updated with our latest services and offers.",
   clientLink1: "", clientLink2: "", clientLink3: "",
   clientLink4: "", clientLink5: "", clientLink6: "",
+  clientLink7: "", clientLink8: "",
   testimonialName1: "John Carter",    testimonialRole1: "Startup Founder",    testimonialText1: "Remotage completely transformed our workflow. We scaled faster without hiring a full in-house team.",
   testimonialName2: "Sarah Williams", testimonialRole2: "Marketing Director", testimonialText2: "The automation and execution quality is next level. It feels like having an elite remote team.",
   testimonialName3: "Ali Khan",       testimonialRole3: "Business Owner",      testimonialText3: "From lead generation to operations, everything became smoother. Highly recommended.",
@@ -65,7 +66,7 @@ const defaultImages = {
   whoWeAssist3: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1400",
   clientLogo1: "", clientLogo2: "", clientLogo3: "",
   clientLogo4: "", clientLogo5: "", clientLogo6: "",
-  testimonialAvatar1: "", testimonialAvatar2: "", testimonialAvatar3: "",
+  clientLogo7: "", clientLogo8: "",
 };
 
 export default function CMSHome() {
@@ -200,7 +201,7 @@ export default function CMSHome() {
           <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />Client Logos & Links
         </h2>
         <div className="space-y-6">
-          {([1, 2, 3, 4, 5, 6] as const).map(n => {
+          {([1, 2, 3, 4, 5, 6, 7, 8] as const).map(n => {
             const imgKey = `clientLogo${n}` as keyof typeof images;
             const linkKey = `clientLink${n}` as keyof typeof form;
             return (
@@ -238,34 +239,18 @@ export default function CMSHome() {
         </h2>
         <div className="space-y-6">
           {([1, 2, 3] as const).map(n => {
-            const avatarKey = `testimonialAvatar${n}` as keyof typeof images;
             const nameKey = `testimonialName${n}` as keyof typeof form;
             const roleKey = `testimonialRole${n}` as keyof typeof form;
             const textKey = `testimonialText${n}` as keyof typeof form;
             return (
               <div key={n} className="space-y-4 border-b border-white/[0.04] pb-6 last:border-b-0 last:pb-0">
                 <p className="text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">Testimonial {n}</p>
-                <div className="grid sm:grid-cols-3 gap-5 items-start">
-                  <div className="relative col-span-1">
-                    <ImageDropZone
-                      label={`Avatar`}
-                      currentImage={images[avatarKey]}
-                      onImageChange={handleImageChange(avatarKey)}
-                      aspectRatio="square"
-                    />
-                    {uploadingKey === avatarKey && (
-                      <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center">
-                        <p className="text-[#D4AF37] text-xs font-semibold">Uploading...</p>
-                      </div>
-                    )}
+                <div className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Field label="Client Name" name={nameKey} value={(form[nameKey] as string) || ""} onChange={handleFormChange} />
+                    <Field label="Client Role" name={roleKey} value={(form[roleKey] as string) || ""} onChange={handleFormChange} />
                   </div>
-                  <div className="col-span-2 space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <Field label="Client Name" name={nameKey} value={(form[nameKey] as string) || ""} onChange={handleFormChange} />
-                      <Field label="Client Role" name={roleKey} value={(form[roleKey] as string) || ""} onChange={handleFormChange} />
-                    </div>
-                    <Field label="Testimonial Text" name={textKey} value={(form[textKey] as string) || ""} onChange={handleFormChange} multiline />
-                  </div>
+                  <Field label="Testimonial Text" name={textKey} value={(form[textKey] as string) || ""} onChange={handleFormChange} multiline />
                 </div>
               </div>
             );

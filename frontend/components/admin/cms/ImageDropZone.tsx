@@ -112,7 +112,7 @@ export default function ImageDropZone({
               <img
                 src={preview}
                 alt="Preview"
-                className="w-full h-full object-cover"
+                className={`w-full h-full ${aspectRatio === "logo" ? "object-contain mix-blend-screen p-2" : "object-cover"}`}
               />
 
               {/* Overlay on hover */}
