@@ -51,6 +51,7 @@ export default function Footer() {
     { label: footer.link2Label, href: footer.link2Href },
     { label: footer.link3Label, href: footer.link3Href },
     { label: footer.link4Label, href: footer.link4Href },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (

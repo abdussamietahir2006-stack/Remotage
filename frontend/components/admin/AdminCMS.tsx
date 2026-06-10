@@ -45,6 +45,14 @@ const pages = [
     glow: "bg-orange-500/5",
   },
   {
+    title: "Blog Posts",
+    href: "/admin/dashboard/cms/blog",
+    desc: "Create, edit, delete and publish blog articles with full SEO settings.",
+    fields: ["Blog Titles", "Keywords", "Draft/Publish Status", "SEO Settings"],
+    color: "border-red-500/30",
+    glow: "bg-red-500/5",
+  },
+  {
     title: "Footer",
     href: "/admin/dashboard/cms/footer",
     desc: "Edit footer description, contact info, links and social media URLs.",

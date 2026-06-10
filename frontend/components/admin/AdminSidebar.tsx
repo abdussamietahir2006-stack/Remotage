@@ -55,6 +55,7 @@ const navItems = [
       { label: "About Page", href: "/admin/dashboard/cms/about" },
       { label: "Services Page", href: "/admin/dashboard/cms/services" },
       { label: "Contact Page", href: "/admin/dashboard/cms/contact" },
+      { label: "Manage Blogs", href: "/admin/dashboard/cms/blog" },
       { label: "Navbar", href: "/admin/dashboard/cms/navbar" },
       { label: "Footer", href: "/admin/dashboard/cms/footer" },
     ],

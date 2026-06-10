@@ -46,8 +46,26 @@ const PasswordResetSchema = new Schema({
 }, { timestamps: true });
 PasswordResetSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
+// ── BlogPost ──────────────────────────────────────────────────────────────────
+const BlogPostSchema = new Schema({
+  title:           { type: String, required: true, trim: true },
+  slug:            { type: String, required: true, unique: true, trim: true, lowercase: true },
+  content:         { type: String, required: true },
+  excerpt:         { type: String, trim: true },
+  coverImage:      { type: String, trim: true },
+  author:          { type: String, default: 'Remotage Team' },
+  status:          { type: String, enum: ['draft', 'published'], default: 'draft' },
+  publishedAt:     { type: Date },
+  metaTitle:       { type: String, trim: true },
+  metaDescription: { type: String, trim: true },
+  targetKeyword:   { type: String, trim: true },
+  tags:            { type: [String], default: [] },
+}, { timestamps: true });
+
 export const Lead          = mongoose.models.Lead          || mongoose.model('Lead',          LeadSchema);
 export const Booking       = mongoose.models.Booking       || mongoose.model('Booking',       BookingSchema);
 export const Subscriber    = mongoose.models.Subscriber    || mongoose.model('Subscriber',    SubscriberSchema);
 export const PageContent   = mongoose.models.PageContent   || mongoose.model('PageContent',   PageContentSchema);
 export const PasswordReset = mongoose.models.PasswordReset || mongoose.model('PasswordReset', PasswordResetSchema);
+export const BlogPost      = mongoose.models.BlogPost      || mongoose.model('BlogPost',      BlogPostSchema);
+

@@ -39,6 +39,7 @@ export default function Navbar() {
     { label: nav.link2Label, href: nav.link2Href },
     { label: nav.link3Label, href: nav.link3Href },
     { label: nav.link4Label, href: nav.link4Href },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
