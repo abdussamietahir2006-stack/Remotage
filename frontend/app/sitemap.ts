@@ -1,57 +1,51 @@
-import { MetadataRoute } from 'next';
-import { dbConnect } from '@/lib/mongodb';
-import { BlogPost } from '@/models/index';
+import { MetadataRoute } from 'next'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.remotage.com';
+export const dynamic = 'force-dynamic'
 
-  const staticRoutes: MetadataRoute.Sitemap = [
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
     {
-      url: baseUrl,
+      url: 'https://www.remotage.com',
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 1.0,
+      priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
+      url: 'https://www.remotage.com/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services`,
+      url: 'https://www.remotage.com/services',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: 'https://www.remotage.com/contact',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // BLOG PAGES
     {
-      url: `${baseUrl}/blog`,
+      url: 'https://www.remotage.com/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-  ];
-
-  try {
-    await dbConnect();
-    const posts = await BlogPost.find({ status: 'published' }).select('slug updatedAt').lean();
-    
-    const blogRoutes: MetadataRoute.Sitemap = posts.map((post: any) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
+    {
+      url: 'https://www.remotage.com/blog/why-outsourced-lead-generation-fails',
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
-    }));
-
-    return [...staticRoutes, ...blogRoutes];
-  } catch (error) {
-    console.error('Error generating dynamic sitemap:', error);
-    return staticRoutes;
-  }
+    },
+    {
+      url: 'https://www.remotage.com/blog/5-signs-your-business-needs-a-virtual-customer-support-team',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ]
 }
